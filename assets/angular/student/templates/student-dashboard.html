@@ -1,0 +1,673 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg p-sm-15 p-l-45">
+  <ul class="breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+    </li>
+    <li><a href="profile.html" class="active">Profile</a>
+  </li>
+</ul>
+<!-- END BREADCRUMB -->
+<h3 class="page-title">My Profile</h3>
+</div>
+
+<!-- START PANEL -->
+<div class="profile-thumb col-md-3 sm-no-padding">
+<div class="panel panel-default m-t-25">
+  <div class="panel-heading">
+    <div class="panel-title">User Profile</div>
+    <div class="profile-img">
+      <!-- button for changing image -->
+      <span id="changeProfileImage">
+        <i class="fa fa-pencil"></i>
+      </span>
+      
+      <!-- image preview element -->
+      <img alt="Profile Thumb" src="/rostrum/uploads/profile_imgs/{{Student.profile_img}}" class="img-responsive" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" id="proImage">
+      <!-- hidden field to change image -->
+      <input type="file" name="profile_image" id="imageInput" onchange="readURL(this)" class="hiden">
+      
+    </div>
+    
+    
+  </div>
+  <div class="panel-body">
+    <h3>
+    <span class="semi-bold" ng-bind="(Student.firstname) +' '+ ( Student.lastname )"></span>
+    </h3>
+    <!-- <h5 class="bold text-primary"><span class="icon-muted fs-14"><i class="fa fa-certificate"></i></span> Expert Mathematician</h5> -->
+    <span class="bold"><span class="icon-muted fs-14"><i class="fa fa-map-marker"></i></span> Block 4, P.U, San Diego</span>
+    <h5 class="semi-bold"><span class="icon-muted fs-14"><i class="fa fa-trophy"></i></span> 120 hours tutions by 5 tutors</h5>
+    <div class="rating">
+      <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+      <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+      <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+      <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+      <span class="star text-warning-dark"><i class="fa fa-star-half-o"></i></span>
+      <span class="rate-count bold">4.5 <a href="_">(22 Reviews)</a></span>
+    </div>
+    <!-- <span class="bold"><span class="icon-muted fs-14"><i class="fa fa-magic"></i></span> 10 Years of Experience</span>
+    <h5 class="semi-bold"><span class="icon-muted fs-14"><i class="fa fa-trophy"></i></span> "Milken Educator Award" Winner</h5> -->
+  </div>
+</div>
+</div>
+<div class="profile-setting col-md-9 no-padding">
+<div id="rootwizard" class="rootwizard-student m-t-20">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm">
+    <li class="active">
+      <a data-toggle="tab" href="#tab1"><span>Student Details</span></a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab2"><span>Parent/Gaurdian Details</span></a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab3"><span>Account Details</span></a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab4"><span>Education Details</span></a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab5"><span>Tuition</span></a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab6"><span>University Admissions</span></a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane padding-20 active slide-left" id="tab1">
+      <div class="row row-same-height">
+        <div class="col-md-12">
+          <div class="padding-30 p-sm-0">
+            <h2>Student Details</h2>
+            <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <div class="row">
+              <div class="col-lg-12">
+                <form id="form-step1" class="form-psetting form-horizontal" role="form" autocomplete="off">
+                  <div class="form-group">
+                    <div class="row">
+                      <label class="col-sm-3 control-label">Gender</label>
+                      <div class="col-sm-9">
+                        <div class="radio radio-primary">
+                          <input type="radio" value="male" name="optionyes" id="male">
+                          <label for="male">Male</label>
+                          <input type="radio" checked="checked" value="female" name="optionyes" id="female">
+                          <label for="female">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-3 control-label">First Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="fname" placeholder="First name" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label for="lname" class="col-sm-3 control-label">Last Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="lname" placeholder="Last name" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="st-mail" placeholder="Email Addresss" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-3 control-label">Phone Number</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="st-num" placeholder="Phone Number" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-3 control-label">Address</label>
+                        <div class="col-sm-9">
+                          <textarea class="form-control" id="name" placeholder="Eg. Xyz Street, Lorem Ipsum."></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-3 control-label">Postal Code</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="pcode" placeholder="Postal Code" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-3 control-label">Date of Birth</label>
+                        <div class="col-sm-6">
+                          <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                            <option selected>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                          </select>
+                          <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                            <option selected>Jan (01)</option>
+                            <option>Feb (02)</option>
+                            <option>Mar (03)</option>
+                            <option>Apr (04)</option>
+                            <option>May (05)</option>
+                            <option>Jun (06)</option>
+                            <option>Jul (07)</option>
+                            <option>Aug (08)</option>
+                            <option>Sep (09)</option>
+                            <option>Oct (10)</option>
+                            <option>Nov (11)</option>
+                            <option>Dec (12)</option>
+                          </select>
+                          <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane slide-left padding-20" id="tab2">
+      <div class="row row-same-height">
+        <div class="col-md-12">
+          <div class="padding-30 p-b-0">
+            <h2>Parent/Guardian Details</h2>
+            <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <form id="form-step2" class="form-psetting form-horizontal" role="form" autocomplete="off">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="col-lg-3 title-group">
+                      <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                        <option value="Title">Title</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Dr">Dr</option>
+                        <option value="Prof">Prof</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="lname" placeholder="Name" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label class="col-sm-3 control-label">Primary Email</label>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="p-mail" placeholder="Primary Email Addresss" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label class="col-sm-3 control-label">Secondary Email</label>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="s-mail" placeholder="Secondary Email Addresss" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label class="col-sm-3 control-label">Phone Number</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="p-num" placeholder="Phone Number" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                      <textarea class="form-control" id="name" placeholder="Eg. Xyz Street, Lorem Ipsum."></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label class="col-sm-3 control-label">Postal Code</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="pcode" placeholder="Postal Code" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane slide-left padding-20" id="tab3">
+      <div class="row row-same-height">
+        <div class="col-md-12">
+          <div class="padding-30 p-b-0">
+            <h2>Account Details</h2>
+            <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <form id="form-step3" class="form-psetting form-horizontal" role="form" autocomplete="off">
+              <div class="form-group">
+                <div class="row">
+                  <label class="col-sm-4 control-label">I am</label>
+                  <div class="col-sm-8">
+                    <div class="radio radio-primary">
+                      <input type="radio" value="student" name="optionyes" id="student">
+                      <label for="student">Student</label>
+                      <input type="radio" checked="checked" value="parent" name="optionyes" id="parent">
+                      <label for="parent">Parent</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label for="password" class="col-sm-4 control-label">Password</label>
+                    <div class="col-sm-8">
+                      <input type="password" class="form-control" id="password" placeholder="Enter Your Password" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <label for="c-password" class="col-sm-4 control-label">Confirm Password</label>
+                    <div class="col-sm-8">
+                      <input type="password" class="form-control" id="c-password" placeholder="Confirm Password" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane slide-left padding-20" id="tab4">
+      <div class="row row-same-height">
+        <div class="col-md-12">
+          <div class="padding-30 p-sm-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Education Details</h2>
+                <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <form id="form-step4" class="form-psetting form-horizontal" role="form" autocomplete="off">
+                  <div class="form-group">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Are you completing an IB programme</label>
+                      <div class="col-sm-8">
+                        <div class="radio radio-primary">
+                          <input type="radio" value="yes1" name="optionyes" id="yes1">
+                          <label for="yes1">Yes</label>
+                          <input type="radio" checked="checked" value="no1" name="optionyes" id="no1">
+                          <label for="no1">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Are you a UK resident?</label>
+                      <div class="col-sm-8">
+                        <div class="radio radio-primary">
+                          <input type="radio" value="yes2" name="optionyes" id="yes2">
+                          <label for="yes2">Yes</label>
+                          <input type="radio" checked="checked" value="no2" name="optionyes" id="no2">
+                          <label for="no2">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label for="schoolname" class="col-sm-4 control-label">School</label>
+                        <div class="col-sm-8">
+                          <input type="email" class="form-control" id="schoolname" placeholder="Please Enter your school" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-4 control-label">Qualification prior to the IB</label>
+                        <div class="col-sm-8">
+                          <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                            <option value="iGCSE">iGCSE</option>
+                            <option value="GCSE">GCSE</option>
+                            <option value="MYP">MYP</option>
+                            <option value="Other">Others</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label class="col-sm-4 control-label">Date of IB graduation</label>
+                        <div class="col-sm-8">
+                          <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                            <option value="May 2017">May 2017</option>
+                            <option value="Nov 2017">Nov 2017</option>
+                            <option value="May 2018">May 2018</option>
+                            <option value="Nov 2018">Nov 2018</option>
+                            <option value="May 2019">May 2019</option>
+                            <option value="Nov 2019">Nov 2019</option>
+                            <option value="May 2020">May 2020</option>
+                            <option value="Nov 2020">Nov 2020</option>
+                            <option value="May 2021">May 2021</option>
+                            <option value="Nov 2021">Nov 2021</option>
+                            <option value="May 2022">May 2022</option>
+                            <option value="Nov 2022">Nov 2022</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane slide-left padding-20" id="tab5">
+      <div class="row row-same-height">
+        <div class="col-md-12">
+          <div class="padding-30 p-sm-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Tuition</h2>
+                <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <form id="form-step5" class="form-psetting form-horizontal" role="form" autocomplete="off">
+                  <div class="form-group">
+                    <label for="tsubject" class="col-sm-5 control-label">Subject</label>
+                    <label for="tsubject" class="col-sm-2 control-label">Levels</label>
+                    <label for="tsubject" class="col-sm-3 control-label">Lesson Type</label>
+                    <label for="tsubject" class="col-sm-2 control-label">Predicted Grade</label>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <div id="education_fields"></div>
+                          <div class="col-sm-5 nopadding">
+                            <div class="form-group">
+                              <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                                <option value="67">Arabic A</option>
+                                <option value="77">Arabic B</option>
+                                <option value="10">Biology</option>
+                                <option value="11">Business Management</option>
+                                <option value="12">Chemistry</option>
+                                <option value="69">Chinese A</option>
+                                <option value="79">Chinese B</option>
+                                <option value="78">Classical Greek</option>
+                                <option value="13">Computer Science</option>
+                                <option value="14">Dance</option>
+                                <option value="15">Design Technology</option>
+                                <option value="51">Dutch A</option>
+                                <option value="54">Dutch B</option>
+                                <option value="16">Economics</option>
+                                <option value="17">English A</option>
+                                <option value="36">English B</option>
+                                <option value="18">Environmental Systems and Societies</option>
+                                <option value="19">Film</option>
+                                <option value="37">French A</option>
+                                <option value="39">French B</option>
+                                <option value="26">Further Mathematics</option>
+                                <option value="20">Geography</option>
+                                <option value="41">German A</option>
+                                <option value="43">German B</option>
+                                <option value="75">Global Politics</option>
+                                <option value="80">Hindi A</option>
+                                <option value="81">Hindi B</option>
+                                <option value="21">History (Route One)</option>
+                                <option value="82">History (Route Two)</option>
+                                <option value="22">Information Technology in a Global Society (ITGS)</option>
+                                <option value="49">Italian A</option>
+                                <option value="50">Italian B</option>
+                                <option value="76">Latin</option>
+                                <option value="65">Law/LNAT</option>
+                                <option value="83">Literature and Performance</option>
+                                <option value="64">Mandarin</option>
+                                <option value="24">Mathematics</option>
+                                <option value="60">Medicine/BMAT</option>
+                                <option value="27">Music</option>
+                                <option value="61">Oxbridge Applications</option>
+                                <option value="28">Philosophy</option>
+                                <option value="29">Physics</option>
+                                <option value="30">Psychology</option>
+                                <option value="72">Russian A</option>
+                                <option value="84">Russian B</option>
+                                <option value="59">SAT</option>
+                                <option value="31">Social and Cultural Anthropology</option>
+                                <option value="47">Spanish A</option>
+                                <option value="45">Spanish B</option>
+                                <option value="70">Sports, Exercise and Health Science</option>
+                                <option value="32">Theatre Arts</option>
+                                <option value="55">TOK</option>
+                                <option value="66">Turkish A</option>
+                                <option value="85">Turkish B</option>
+                                <option value="62">University Mentoring</option>
+                                <option value="63">US Applications</option>
+                                <option value="9">Visual Arts</option>
+                                <option value="33">World Religions</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-2 nopadding">
+                            <div class="form-group">
+                              <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                                <option value="1">HL</option>
+                                <option value="2">SL</option>
+                                <option value="4">MYP</option>
+                                <option value="5">PYP</option>
+                                <option value="6">Ab Initio</option>
+                                <option value="7">Studies</option>
+                                <option value="3">N/A</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-3 nopadding">
+                            <div class="form-group">
+                              <select class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                                <option value="1">Face-to-face</option>
+                                <option value="2">Interview</option>
+                                <option value="3">Online</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-2 nopadding">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input type="email" class="form-control" id="p-grade" placeholder=" " required>
+                                <div class="input-group-btn">
+                                  <button class="btn btn-primary" type="button" onclick="education_fields();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Lesson information and further comments</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" id="name" placeholder="Enter your text here : Maximum 500 Characters allowed."></textarea>
+                        <p class="hint-text small p-t-5">Maximum Allowed: 500 Characters.</p>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane slide-left padding-20" id="tab6">
+      <div class="row row-same-height">
+        <div class="col-md-12">
+          <div class="padding-30 p-sm-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>University Admissions</h2>
+                <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </div>
+              <form id="form-step6" class="form-psetting form-horizontal" role="form" autocomplete="off">
+                <div class="form-group">
+                  <div class="col-lg-12">
+                    <label for="schoolname" class="col-sm-12 control-label">I am intereseted in</label>
+                    <div class="col-sm-12">
+                      <div class="checkbox check-primary">
+                        <input type="checkbox" value="uk_uni_support" name="check" id="uk_uni_support">
+                        <label for="uk_uni_support">UK University Support</label>
+                        <br>
+                        <input type="checkbox" value="oxf_cam_support" name="check" id="oxf_cam_support">
+                        <label for="oxf_cam_support">Oxford &amp; Cambridge Support</label>
+                        <br>
+                        <input type="checkbox" value="med_app_support" name="check" id="med_app_support">
+                        <label for="med_app_support">Medical Applications Support</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-12">
+                    <label class="col-sm-12 control-label">Degree/Career Aspirations</label>
+                    <div class="col-sm-8">
+                      <textarea class="form-control m-t-10" id="name" placeholder="Enter your text here : Maximum 200 Characters allowed."></textarea>
+                      <p class="hint-text small p-t-5">Maximum Allowed: 200 Characters.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="pull-left">
+                    <div class="checkbox check-primary p-b-10">
+                      <input type="checkbox" checked="checked" value="1" id="checkbox-agree">
+                      <label for="checkbox-agree">I have read and agree to the Terms &amp; Conditions</label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="padding-20 bg-white m-b-100">
+    <ul class="pager wizard">
+      <li class="next">
+        <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
+        <span>Next</span>
+        </button>
+      </li>
+      <li class="next finish hidden">
+        <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+        <span>Finish</span>
+        </button>
+      </li>
+      <li class="previous first hidden">
+        <button class="btn btn-default btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+        <span>First</span>
+        </button>
+      </li>
+      <li class="previous">
+        <button class="btn btn-default btn-cons pull-right" type="button">
+        <span>Previous</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+<!-- END PANEL -->

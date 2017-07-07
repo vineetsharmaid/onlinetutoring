@@ -1,0 +1,52 @@
+<div class="panel panel-transparent admin-data" ng-init="transactionList()">
+  <!-- Shows loader  -->
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+ <div class="panel-heading m-t-30">
+    <div class="panel-title">Payments & Transactions</div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+ <table class="table table-striped" id="setDataTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Tution</th>
+          <th>Class</th>
+          <th>Payment By</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <!-- <th class="text-center">Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="Transaction in requestedTransactions">
+          <td class="v-align-middle" ng-bind="Transaction.transaction_id"></td>
+          
+          <td class="v-align-middle" ng-bind="Transaction.tution_title"></td>
+          
+          <td class="v-align-middle" ng-bind="Transaction.title"></td>
+          
+          <td class="v-align-middle" ng-bind="(Transaction.student_fname) +' '+ (Transaction.student_lname)"></td>
+          
+          <td class="v-align-middle">
+            <span>
+            <i class="fa fa-gbp">&nbsp;</i>
+            <b ng-bind="Transaction.transaction_amount"></b></span>
+          </td>
+
+          <td class="v-align-middle" ng-bind="Transaction.payment_at"></td>
+          
+          <!-- <td class="v-align-middle text-center">
+            <div class="btn-group"> 
+              <a href="#/transactions/{{Transaction.transaction_id}}" class="btn btn-sm btn-primary m-l-5">
+                Details
+              </a>
+            </div>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- END PANEL -->

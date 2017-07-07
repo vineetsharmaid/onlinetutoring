@@ -1,0 +1,82 @@
+<div class="panel panel-transparent admin-data">
+  
+  <!-- Shows loader  -->
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  <div class="panel panel-transparent">
+    <div class="panel-heading m-t-30">
+      
+      <div class="panel-title fs-14"> Schedule of: <span class="semi-bold text-primary" ng-bind="+(userDetails.firstname) +' '+(userDetails.lastname)"></span></div>
+      <br />
+      <div class="panel-title fs-14" ng-show="userDetails.role == 1">User Type - <span class="semi-bold">Student</span></div>
+      <div class="panel-title fs-14" ng-show="userDetails.role == 2">User Type - <span class="semi-bold">Tutor</span></div>
+
+      <div class="pull-right">
+        <div class="col-xs-12">
+          <a href="#/students-list" class="btn btn-sm btn-default" ng-show="userDetails.role == 1">Back</a>
+          <a href="#/tutors-request" class="btn btn-sm btn-default" ng-show="userDetails.role == 2">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- START Calendar -->
+  <div id="myCalendar" class="full-height container-fluid container-fixed-lg padd-0 m-t-45"></div>
+  <!-- END Calendar -->
+
+  <!-- START Calendar Events Form -->
+  <div class="quickview-wrapper calendar-event" id="calendar-event">
+    <div class="view-port clearfix" id="eventFormController">
+      <div class="view bg-white">
+        <div class="scrollable">
+          <div class="p-l-30 p-r-30 p-t-20">
+            <a class="pg-close text-master link pull-right" data-toggle="quickview" data-toggle-element="#calendar-event" data-href="#"></a>
+            <h4 id="event-date">&amp;</h4>
+            <div class="m-b-20">
+              <i class="fa fa-clock-o"></i>
+              <span id="lblfromTime"></span> to
+              <span id="lbltoTime"></span>
+            </div>
+          </div>
+          <div class="p-t-15">
+            <input id="eventIndex" name="eventIndex" type="hidden">
+            <div class="form-group-attached">
+              <div class="form-group form-group-default ">
+                <label>Title</label>
+                <!-- <input type="text" class="form-control" ng-model="Schedule.title" id="txtEventName" name="title" placeholder="event name"> -->
+                <p ng-bind="Schedule.title"></p>
+              </div>
+              
+              <div class="row clearfix">
+                <div class="form-group form-group-default">
+                  <label>Description</label>
+                  <!-- <textarea class="form-control" ng-model="Schedule.description" name="description" placeholder="description" id="txtEventDesc"></textarea> -->
+                  <p ng-bind="Schedule.description"></p>
+                </div>
+              </div>
+
+              <div class="row clearfix">
+                <div class="form-group form-group-default show-helpers">
+                  <label>Tution</label>
+                  <!-- <input class="form-control" type="text" name="tution" ng-model="Schedule.tutionData" uib-typeahead="tution as (tution.title) for tution in userTutions | filter:$viewValue | limitTo:8" id="tutionId"> -->
+                  <p ng-bind="Schedule.tutionData.title"></p>
+                </div>
+              </div>
+              <!-- <div class="row clearfix cursor">
+                <div class="form-group form-group-default" data-navigate="view" data-view-port="#eventFormController" data-view-animation="push-parrallax">
+                  <label>Alerts</label>
+                  <div class="p-t-10">
+                    <span class="pull-right p-r-10 p-b-5"><i class="pg-arrow_right"></i></span>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="p-l-30 p-r-30 p-t-30" ng-show="Schedule.schedule_status != 1">
+            <!-- event status related data can be shown here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

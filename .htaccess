@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /rostrum/index.php [L]
+</IfModule>
+#Force www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^rostrumib.com [NC]
+RewriteRule ^(.*)$ http://www.rostrumib.com/$1 [L,R=301,NC]

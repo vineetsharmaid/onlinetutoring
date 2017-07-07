@@ -1,0 +1,120 @@
+<div class="panel panel-transparent">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  <div class="row" ng-init="getFeed( savedData.tMethodID, savedData.country, savedData.state, savedData.city, savedData.status)">
+    <div class="col-md-12">
+      <div class="col-md-offset-3 col-md-9">
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10 dark-blue2" ng-class="{ 'selectedTab': savedData.status == '0' }" ng-click="getFeed( savedData.tMethodID, savedData.country, savedData.state, savedData.city, 0)">
+        All Jobs</a>
+        
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10 btn-primary" ng-class="{'selectedTab': savedData.status=='4'}" ng-click="getFeed( savedData.tMethodID, savedData.country, savedData.state, savedData.city, 4)">Requested</a>
+
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10 dark-blue1" ng-class="{'selectedTab': savedData.status=='1'}"  ng-click="getFeed( savedData.tMethodID, savedData.country, savedData.state, savedData.city, 1)">Ongoing</a>
+        
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10 dark-blue" ng-class="{'selectedTab': savedData.status=='3'}"  ng-click="getFeed( savedData.tMethodID, savedData.country, savedData.state, savedData.city, 3)">Completed</a>
+      </div>
+
+
+
+      <div class="col-md-3">
+        <div class="sidebar sidebar-list m-t-20">
+          
+          <div class="widget m-t-0" ng-init="cityFilter(savedData.tMethodID)">
+            <h4 class="widget-title line-bottom">Tution Method</h4>
+            <div class="search-form">
+              <select class="cs-select cs-skin-slide cs-transparent form-control" data-init-plugin="cs-select" ng-model="tMethod.tMethodID" ng-change="cityFilter(tMethod.tMethodID)">
+                <option value="">All</option>
+                <option value="1" ng-selected="savedData.tMethodID == 1">Online Tutoring</option>
+                <option value="2" ng-selected="savedData.tMethodID == 2">In Person Tutoring</option>
+                <option value="3" ng-selected="savedData.tMethodID == 3">University consultancy</option>
+              </select>
+            </div>
+          </div>
+
+          <div ng-show="showCity">
+            
+            <div class="widget m-t-0" ng-init="getCountries()">
+              <h4 class="widget-title line-bottom">Country</h4>
+              <div class="search-form">
+                <select name="country" class="form-control" ng-model="feedFilter.country" ng-options="country.name for country in Countries" ng-change="getStates(feedFilter.country)" required>
+                </select>
+              </div>
+            </div>
+          <!-- </div> -->
+          <!-- <div class="row"> -->
+            <div class="widget m-t-0">
+              <h4 class="widget-title line-bottom">State</h4>
+              <div class="search-form">
+                <select name="state" class="form-control" ng-model="feedFilter.state" ng-options="state.name for state in States" ng-change="getCities(feedFilter.state)" required>
+                </select>
+              </div>
+            </div>
+
+            <div class="widget m-t-0">
+              <h4 class="widget-title line-bottom">City</h4>
+              <div class="search-form">
+                <select name="city" class="form-control" ng-model="feedFilter.city" ng-options="city.name for city in Cities" required>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="m-t-15">
+            <button type="button" class="btn btn-complete btn-cons btn-animated from-left pg pg-search" ng-click="getFeed( tMethod.tMethodID, feedFilter.country, feedFilter.state, feedFilter.city, savedData.status)">
+            <span>Search</span>
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div ng-class="{beforeData_loader: partialLoader}"></div>
+
+        
+        <div class="panel panel-default m-t-25 mh-800">
+          <div class="panel-heading">
+            <div class="panel-title">My Feeds</div>
+          </div>
+
+
+          <div class="panel-body">
+            <div class="icon-box mb-0 pl-20 p-0" ng-show="Feeds.length == 0">
+              <div class="empty-msg">
+                <h5>
+                No tution request found.
+                </h5>
+              </div>
+            </div>
+
+            <div class="icon-box mb-0 pl-20 p-0"  ng-show="Feeds.length > 0" ng-repeat="Feed in filteredFeeds">
+              <h3 class="icon-box-title pt-10 mt-0 mb-0" ng-bind="Feed.title"></h3>
+              <h5 class="small hint-text m-t-0 m-b-0"><i class="fa fa-calendar m-r-5 m-t-5 fs-14"></i> Posted at {{Feed.date}} {{Feed.time}}</h5>
+              <hr>
+              <p class="text-gray" ng-bind="Feed.description"></p>
+              <a href="#/feeds/{{Feed.tr_id}}" class="btn btn-primary btn-cons btn-animated from-left pg pg-bag1">
+                <span>View Job</span>
+              </a>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" ng-if="totalItems > itemsPerPage">
+    <div class="col-sm-6 col-md-offset-3 down-navigation">
+      <nav class="pull-right" ng-if="totalItems > itemsPerPage">
+        <ul uib-pagination 
+            total-items     = "totalItems" 
+            items-per-page  = "itemsPerPage" 
+            ng-model        = "currentPage" 
+            ng-change       = "pageChanged(currentPage)">
+        </ul>
+      </nav>
+    </div>
+  </div>
+  </div>

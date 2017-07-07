@@ -1,0 +1,85 @@
+<div id="preloader" ng-show="showLoader">
+  <div id="spinner">
+    <div class="preloader-bubblingG">
+      <span id="bubblingG_1"></span>
+      <span id="bubblingG_2"></span>
+      <span id="bubblingG_3"></span>
+    </div>
+  </div>
+  <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+</div>
+
+<div class="row" style="min-height:295px !important">
+  <div class="col-md-9 blog-pull-right">
+    <div class="searchtutor row mb-25" ng-show="Tutors.length > 0" ng-repeat="Tutor in filteredTutors | filter: tutorName">
+      <div class="col-sm-6 col-md-3">
+        <div class="thumb"> 
+          <img alt="featured project" src="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" class="img-fullwidth">
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-9">
+        
+        <h4 class="line-bottom mt-0 mb-15 mt-sm-20" ng-bind="(Tutor.firstname)+ ' ' +(Tutor.lastname)"></h4>
+       
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.Aliquam ipsum quis ipsum facilisis sit ame ipsum quis ipsum facilisis sit amet facilisis consecte.</p>
+        <a href="#/tutor/{{Tutor.user_id}}" class="btn btn-dark btn-theme-colored btn-sm text-uppercase">view details</a>
+      </div>
+    </div>
+    <hr>    
+  </div>
+  <div class="col-md-3">
+    <div class="sidebar sidebar-left mt-sm-30">
+      <div class="widget">
+        <h4 class="widget-title line-bottom">Search</h4>
+        <div class="search-form">
+          <form>
+            <div class="input-group">
+              <input type="text" ng-model="tutorName" placeholder="Click to Search" class="form-control search-input">
+              <span class="input-group-btn">
+                <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="widget m-t-0">
+            <h4 class="widget-title line-bottom">Search by Subjects</h4>
+            <div class="search-form" ng-init="getSubjects()">
+              <select class="cs-select cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="cs-select" ng-model="Subject.subject_id" ng-change="getTutorsBySubject()" >
+                <option value="">All Subjects</option>
+                <option  ng-repeat="Subject in Subjects"  value="{{Subject.subject_id}}">{{Subject.subject_name}}</option>
+              </select>
+            </div>
+          </div>
+      </div>
+</div>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="col-sm-9 col-md-offset-3">
+    <nav>
+      <ul class="pagination theme-colored pull-right m-0">
+        <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">...</a></li>
+        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div> -->
+
+<div class="row" ng-if="totalItems > itemsPerPage">
+  <div class="col-sm-6 col-md-offset-3">
+    <nav class="pull-right" ng-if="totalItems > itemsPerPage">
+      <ul uib-pagination 
+          total-items     = "totalItems" 
+          items-per-page  = "itemsPerPage" 
+          ng-model        = "currentPage" 
+          ng-change       = "pageChanged(currentPage)">
+      </ul>
+    </nav>
+  </div>
+</div>

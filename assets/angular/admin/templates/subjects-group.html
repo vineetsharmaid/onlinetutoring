@@ -1,0 +1,118 @@
+<div class="panel panel-transparent admin-data" ng-init="tableList()">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  <div class="modal-demo">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Create Group</h3>
+        </div>
+        
+        <form class="form-psetting form-horizontal auth-form" role="form" name="subjectGroupForm" ng-submit="createSubjectGroup()" autocomplete="off" novalidate >
+        
+          <div class="modal-body" id="modal-body">
+            <div class="row">
+              <div class="form-group col-sm-12">                
+                <label class="col-sm-4">Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" ng-model="formData.group_name" name="group_name" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+              <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+              <button class="btn btn-success" type="button" ng-disabled="subjectGroupForm.$invalid" ng-click="ok()">Save</button>
+          </div>
+        
+        </form>
+    </script>
+  </div>
+
+  <div class="modal-demo">
+    <script type="text/ng-template" id="editGroup.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="edit-modal-title">Edit Group</h3>
+        </div>
+        
+        <form class="form-psetting form-horizontal auth-form" role="form" name="subjectGroupEditForm" autocomplete="off" novalidate >
+          
+          <input type="hidden" ng-model="formData.sGroup_id" name="group_id">
+
+          <div class="modal-body" id="modal-body">
+            <div class="row">
+              <div class="form-group col-sm-12">                
+                <label class="col-sm-4">Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" ng-model="formData.group_name" name="group_name" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+              <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+              <button class="btn btn-success" type="button" ng-disabled="subjectGroupEditForm.$invalid" ng-click="ok()">Save</button>
+          </div>
+        
+        </form>
+    </script>
+  </div>
+
+  <div class="panel-heading m-t-30 m-b-30">
+    <div class="panel-title">Subjects Group</div>
+    <button class="btn btn-sm btn-success pull-right" ng-click="open('lg', '', 'myModalContent.html', 'create_subject_group', 'group')">
+      <span>
+        <i class="fa fa-plus"> &nbsp; </i>
+        Create Group
+      </span>
+    </button>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped" id="setDataTable" ng-init="getSubjectGroups()">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Group Name</th>
+          <th>Subjects Count</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="Group in Groups">
+          <td class="v-align-middle semi-bold"><p>RS112</p></td>
+          
+          <td class="v-align-middle">
+            <a href="#/subjects-group/{{Group.sGroup_id}}">
+              <span class="text-primary bold" ng-bind="Group.group_name"></span>
+            </a>
+          </td>
+          
+          <td class="v-align-middle" ng-bind="Group.subject_count"></td>
+          
+          <td class="v-align-middle" >
+              <a href="#/subjects-group/{{Group.sGroup_id}}" class="btn btn-sm btn-success" >
+                &nbsp; <i class="fa fa-eye">&nbsp;</i>
+                View &nbsp;
+              </a>
+              <a class="btn btn-sm btn-primary"  ng-click="open('lg', '', 'editGroup.html', 'edit_subject_group', 'group', Group)">
+                &nbsp; <i class="fa fa-pencil">&nbsp;</i>
+                Edit &nbsp;
+              </a>
+              <a class="btn btn-sm btn-danger" ng-click="deleteAction( Group.sGroup_id, 'sGroup_id', 'subject_group' )">
+                &nbsp; <i class="fa fa-trash">&nbsp;</i>
+                Delete &nbsp;
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- END PANEL -->
+</div>
+<!-- END CONTAINER FLUID -->
+
+</div>
+<!-- END PAGE CONTENT -->

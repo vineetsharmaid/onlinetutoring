@@ -1,0 +1,25 @@
+<div class="panel panel-transparent admin-data">
+  <!-- <div ng-class="{beforeData_loader: showLoader}"></div> -->
+
+  <div class="row m-t-50">
+		  <form class="" name="createPageForm" ng-submit="createPage()" autocomplete="off" novalidate >
+		  	
+		  	<div class="form-group col-md-12 m-b-50">
+		  		<label>Page Title</label>
+		  		<input type="text" name="page_name" class="form-control" required>
+		  		<span class="errors" ng-show="createPageForm.page_name.$dirty && createPageForm.page_name.$error.required">This field is required</span>
+		  	</div>
+		  	
+		  	<div class="form-group col-md-12 m-b-50">
+		  		<label>Content</label>
+		  		<textarea class="tinyMce" name="page_content" ></textarea>
+		  		<!-- <textarea class="tinyMce" name="page_content" required></textarea> -->
+		  		<!-- <span class="errors" ng-show="createPageForm.page_content.$dirty && createPageForm.page_content.$error.required">This field is required</span> -->
+		  	</div>
+		  	
+		  	<div class="col-md-12 m-b-20">
+		  		<button type="submit" class="btn btn-success" ng-disabled="createPageForm.$invalid">Create</button>
+		  	</div>
+		  </form>
+  </div>
+</div>

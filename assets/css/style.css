@@ -1,0 +1,100 @@
+/*
+
+* Override Pages default styles or create your own styles here
+
+*/
+
+.form-group.has_errors { border: 1px solid #e67373 !important; }
+form.auth-form .form-group { margin-bottom: 0px !important; }
+form.auth-form span.errors { color: #e67373; font-size: 12px; }
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.hiden { display: none !important; }
+#rostrum_fullloader { position: fixed; height: 100%; width: 100%; background:  url(../img/ripple.gif) no-repeat center center fixed; z-index: 9999; background-color: #ffffff; }
+#rostrum_partialloader { position: fixed; height: 100%; width: 100%; background:  url(../img/ring.gif) no-repeat center center fixed; z-index: 9999; background-color: rgba(0, 0, 0, 0.5);}
+.beforeData_loader { position: absolute; height: 100%; width: 100%; background:  url(../img/ring.gif) no-repeat center center fixed; z-index: 100; background-color: #fff;}
+
+div.admin-data { min-height: 840px; position: relative; }
+div.requests-list { min-height: 840px; max-height: 840px; }
+.mh-800 { min-height: 800px; }
+.mh-526 { min-height: 526px; }
+.empty-msg { text-align: center; margin-top: 15%; }
+.no-padding { padding: 0px !important; }
+.justified p { text-align: justify; }
+
+ul.tutions-list li.active { background: #efefef; }
+.show-helpers { overflow: visible !important; }
+.padd-0 { padding: 0px !important; }
+
+.btn-primary.custom-bordered { border: 1px solid #00AAD6; color: #00AAD6; background-color: #ffffff !important; }
+.btn-success.custom-bordered { border: 1px solid #40d9ca; color: #40d9ca; background-color: #ffffff !important; }
+.btn-info.custom-bordered { border: 1px solid #626c75; color: #626c75; background-color: #ffffff !important; }
+.profile-page label.control-label.required:after {
+    content: "*";
+    color: red;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 100 !important;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.mar-r-10 { margin-right: 10px; }
+#modalStudentpost textarea { padding-top: 8px !important; font-size: 12px !important; }
+
+
+ul.settings-tabs > li.active > a, ul.settings-tabs > li.active > a:hover { color: #ffffff; background-color: #00aad6; }
+ul.settings-tabs > li > a:hover { color: #ffffff; background-color: #00aad6; }
+ul.settings-tabs > li > a { color: #626262; background-color: #f0f0f0; cursor: pointer; }
+button.width-100, label.width-100 { width: 100px; }
+.btn-under-label label.btn { display: inline !important; }
+
+
+/*Search Page Tutor Images */
+
+.img-fullwidth{
+height:175px !important;
+}
+
+.selectedTab {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    border-color: #ffffff !important;
+}
+
+.selectedTab:focus {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    border-color: #ffffff !important;
+}
+
+.srch-drpdwn { overflow: visible !important; }
+.srch-drpdwn ul.dropdown-menu { width: 100%; left: 0 !important; }
+.sidebar-list select { max-width: 200px; width: 200px !important; }
+.split-view .split-details { width: 60%; }
+.requests-page .split-view .split-details .email-content-wrapper .email-content {
+    padding: 35px 20px 70px; width: auto;
+}

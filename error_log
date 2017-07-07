@@ -1,0 +1,45 @@
+[24-Apr-2017 13:43:48 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/rostrum123/public_html/application/modules/home/controllers/Home.php on line 73
+[24-Apr-2017 13:43:54 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/rostrum123/public_html/application/modules/home/controllers/Home.php on line 73
+[24-Apr-2017 13:43:59 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/rostrum123/public_html/application/modules/home/controllers/Home.php on line 73
+[25-Apr-2017 07:24:04 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home.php on line 210
+[25-Apr-2017 07:24:06 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home.php on line 210
+[25-Apr-2017 07:24:07 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home.php on line 210
+[25-Apr-2017 07:24:07 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home.php on line 210
+[25-Apr-2017 07:24:08 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home.php on line 210
+[25-Apr-2017 07:24:08 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home.php on line 210
+[25-Apr-2017 09:51:15 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:52:05 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:52:45 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:53:03 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:53:04 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:53:05 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:53:21 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:53:23 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:53:26 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:54:26 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:54:27 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:54:28 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:54:41 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[25-Apr-2017 09:54:43 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 145
+[03-May-2017 07:39:33 UTC] PHP Fatal error:  Call to undefined function +93() in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 204
+[03-May-2017 07:39:46 UTC] PHP Fatal error:  Call to undefined function +93() in /home/rostrum123/public_html/application/modules/home/views/home_header.php on line 204
+[04-May-2017 07:42:20 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 421
+[04-May-2017 07:42:20 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 421
+[04-May-2017 07:42:20 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 421
+[04-May-2017 07:42:24 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 421
+[04-May-2017 07:42:45 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 421
+[04-May-2017 07:42:46 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 421
+[04-May-2017 07:46:15 UTC] PHP Fatal error:  Call to undefined function Month() in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 422
+[04-May-2017 07:46:20 UTC] PHP Fatal error:  Call to undefined function Month() in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 422
+[04-May-2017 07:46:54 UTC] PHP Fatal error:  Call to undefined function Month() in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 422
+[04-May-2017 07:46:57 UTC] PHP Fatal error:  Call to undefined function Month() in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 422
+[04-May-2017 07:47:10 UTC] PHP Fatal error:  Call to undefined function Month() in /home/rostrum123/public_html/application/modules/student/controllers/Student.php on line 422
+[04-May-2017 10:55:01 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in /home/rostrum123/public_html/application/modules/cron/controllers/Cron.php on line 136
+[04-May-2017 10:55:02 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in /home/rostrum123/public_html/application/modules/cron/controllers/Cron.php on line 136
+[04-May-2017 10:55:17 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in /home/rostrum123/public_html/application/modules/cron/controllers/Cron.php on line 136
+[22-May-2017 14:32:01 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/rostrum123/public_html/system/database/drivers/mysqli/mysqli_driver.php on line 392
+[26-May-2017 14:11:58 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/rostrum123/public_html/system/database/drivers/mysqli/mysqli_driver.php on line 392
+[26-May-2017 14:11:58 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/rostrum123/public_html/system/database/drivers/mysqli/mysqli_driver.php on line 392
+[26-May-2017 14:12:01 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/rostrum123/public_html/system/database/drivers/mysqli/mysqli_driver.php on line 392
+[26-May-2017 14:12:03 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/rostrum123/public_html/system/database/drivers/mysqli/mysqli_driver.php on line 392
+[26-May-2017 14:12:03 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/rostrum123/public_html/system/database/drivers/mysqli/mysqli_driver.php on line 392

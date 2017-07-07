@@ -1,0 +1,51 @@
+<div class="panel panel-transparent admin-data" ng-init="tableList()">
+  
+  <!-- Shows loader  -->
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  <div class="panel-heading m-t-30">
+    <div class="panel-title">Students</div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped" id="setDataTable">
+      <thead>
+        <tr>
+          <!-- <th>Reg. ID</th> -->
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="Student in Students">
+          <!-- <td class="v-align-middle semi-bold"><p>RS112</p></td> -->
+          
+          <td class="v-align-middle">
+            <a href="#/students-list/{{Student.user_id}}">
+              <span class="text-primary bold" ng-bind="(Student.firstname) + ' ' + (Student.lastname)"></span>
+            </a>
+          </td>
+          
+          <td class="v-align-middle" ng-bind="Student.email"></td>
+          
+          <td class="v-align-middle" ng-bind="Student.phone"></td>
+
+          <td class="v-align-middle">
+            <div class="btn-group"> 
+              <!-- <a href="#/students-list/{{Student.user_id}}" class="btn btn-sm btn-primary">Details</a> -->
+              <a href="#/schedule/{{Student.user_id}}" class="btn btn-sm btn-info">Schedule</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- END PANEL -->
+</div>
+<!-- END CONTAINER FLUID -->
+
+</div>
+<!-- END PAGE CONTENT -->

@@ -1,0 +1,60 @@
+<div class="panel panel-transparent admin-data" ng-init="tableList()">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  <div class="panel-heading m-t-30 m-b-30">
+    <div class="panel-title">Pages</div>
+    <a href="#/pages/create" class="btn btn-sm btn-success pull-right">
+      <span>
+        <i class="fa fa-plus"> &nbsp; </i>
+        Create Page
+      </span>
+    </a>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped" id="setDataTable" ng-init="getPages()">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Page Name</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="Page in Pages">
+          <td class="v-align-middle semi-bold"><p>RS112</p></td>
+          
+          <td class="v-align-middle">
+            <a href="#/pages/{{Page.page_id}}">
+              <span class="text-primary bold" ng-bind="Page.page_name"></span>
+            </a>
+          </td>
+          
+          <td class="v-align-middle" ng-bind="Page.page_status"></td>
+          
+          <td class="v-align-middle" >
+              <a href="#/subjects-group/{{Page.page_id}}" class="btn btn-sm btn-success" >
+                &nbsp; <i class="fa fa-eye">&nbsp;</i>
+                View &nbsp;
+              </a>
+              <a class="btn btn-sm btn-primary">
+                &nbsp; <i class="fa fa-pencil">&nbsp;</i>
+                Edit &nbsp;
+              </a>
+              <a class="btn btn-sm btn-danger">
+                &nbsp; <i class="fa fa-trash">&nbsp;</i>
+                Delete &nbsp;
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- END PANEL -->
+</div>
+<!-- END CONTAINER FLUID -->
+
+</div>
+<!-- END PAGE CONTENT -->

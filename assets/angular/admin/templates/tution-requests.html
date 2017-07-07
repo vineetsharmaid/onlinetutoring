@@ -1,0 +1,335 @@
+<div class="panel panel-transparent admin-data">
+  
+  <!-- Shows loader  -->
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+<div class="page-content-wrapper full-height">
+  <div class="content full-height p-t-0">
+
+    <div class="modal-demo">
+      <script type="text/ng-template" id="tutorDetails.html">
+        <div class="modal-header p-b-25">
+            <h3 class="modal-title" id="modal-title">Tutor Details</h3>
+        </div>
+        <div class="modal-body tut-detail-modal" id="modal-body">
+          <div class="row">
+            <div class="profile-thumb col-lg-3">
+              <div class="panel panel-default m-t-25">
+                <div class="panel-heading"><!-- 
+                  <div class="panel-title">User Profile</div> -->
+                  <div class="profile-img">
+                  <!-- <span><i class="fa fa-check"></i> Verified</span> -->
+                  <img alt="Profile Thumb" src="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" class="img-responsive">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <div class="table-responsive">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th>Name </th>
+                      <td ng-bind="(Tutor.firstname)+ ' ' +(Tutor.lastname)">
+                      </td>
+                    </tr>                        
+                    <!-- <tr>
+                      <th>Date of Birth </th>
+                      <td ng-bind="Tutor.dob"></td>
+                    </tr> -->
+                    <tr>
+                      <th>Primary Email </th>
+                      <td ng-bind="Tutor.email">rostrum_tutor@yopmail.com</td>
+                    </tr>
+                    <tr>
+                      <th>Secondary Email </th>
+                      <td ng-bind="Tutor.secondary_email">rostrum_tutor@yopmail.com</td>
+                    </tr>
+                    <tr>
+                      <th>Primary Phone Number </th>
+                      <td ng-bind="Tutor.phone"></td>
+                    </tr>
+                    <tr>
+                      <th>Secondary Phone Number </th>
+                      <td ng-bind="Tutor.secondary_phone"></td>
+                    </tr>
+                    <!-- <tr>
+                      <th>How did you find out about Rostrum? </th>
+                      <td ng-bind="Tutor.how_abt_rostrum"></td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+
+        <input type="hidden" name="tution_id" ng-init="formData.tutor_id = Tutor.user_id" ng-model="formData.tutor_id">
+
+        <input type="hidden" name="tutor_id" ng-init="formData.tution_id = singleTutionId" ng-model="formData.tution_id">
+        
+        <input type="hidden" ng-init="formData.status = Tution.status == 1 ? 0: 1" name="formData.status" ng-model="formData.status">
+
+        <div class="row">
+          <div class="alert alert-primary col-sm-6 m-l-45" ng-show="Tution.tutor_response == 1 && Tution.specific_tutor == Tutor.user_id">
+            <strong>Accepted!</strong> by tutor.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="alert alert-danger col-sm-6 m-l-45" ng-show="Tution.tutor_response == 2 && Tution.specific_tutor == Tutor.user_id">
+            <strong>Declined!</strong> by tutor.
+          </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button" ng-click="cancel()">Close</button>
+            
+            <button ng-show="Tution.status == 1" class="btn btn-primary pull-left" type="button" ng-click="ok()">Un Assign</button>
+            
+            <button ng-show="Tution.status == 0" class="btn btn-primary pull-left" type="button" ng-click="ok()">Assign</button>
+
+        </div>
+
+      </script>
+    </div>
+
+
+    <nav class="secondary-sidebar padding-30" ng-init="getRequestsCount()">
+      <p class="menu-title">ALL REQUESTS</p>
+      <ul class="main-menu requests-list-ul">
+        <li>
+          <a href="#/tution-requests" ng-click="getRequests(9)" ng-class="showRequestType == 9 ? 'active' : '' ">
+            <span class="title"><i class="fa fa-font"></i> All Requests</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="#/tution-requests" ng-click="getRequests(0)" ng-click="getRequests(9)" ng-class="showRequestType == 0 ? 'active' : '' ">
+            <span class="title"><i class="fa fa-product-hunt"></i> Pending Requests</span>
+            <span class="m-t-15 badge badge-warning pull-right" ng-bind="reqReqCount"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#/tution-requests" ng-click="getRequests(1)" ng-class="showRequestType == 1 ? 'active' : '' ">
+            <span class="title"><i class="fa fa-flag"></i> Assigned Requests</span>
+            <span class="m-t-15 badge badge-info pull-right" ng-bind="assReqCount"></span>
+          </a>
+        </li>
+        
+        <!-- <li class="active">
+          <a href="#/tution-requests" ng-click="getRequests(2)" ng-class="showRequestType == 2 ? 'active' : '' ">
+            <span class="title"><i class="fa fa-thumbs-up"></i> Accepted</span>
+            <span class="m-t-10 badge badge-success pull-right" ng-bind="accReqCount">200</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="#/tution-requests" ng-click="getRequests(3)" ng-class="showRequestType == 3 ? 'active' : '' ">
+            <span class="title"><i class="fa fa-user-times"></i> Declined</span>
+            <span class="m-t-10 badge badge-danger pull-right" ng-bind="decReqCount">16</span>
+          </a>
+        </li> -->
+      </ul>
+    </nav>
+    <!-- END SECONDARY SIDEBAR MENU -->
+    <div class="inner-content full-height">
+      <div class="split-view">
+        <!-- START SPLIT LIST VIEW -->
+        <div class="split-list requests-list">
+          <!-- <a class="list-refresh" href="#"><i class="fa fa-refresh"></i></a> -->
+          
+          <div data-email="list">
+            <div class="list-view-group-container">
+              <div class="list-view-group-header"><span></span></div>
+              
+              <ul class="no-padding tutions-list" ng-init="getRequests(0)">
+                
+                <li class="item padding-15" ng-repeat="Request in Requests" ng-click="getRequest(Request.tr_id)" ng-class="singleTutionId == Request.tr_id ? 'active' : '' ">
+                  <div class="thumbnail-wrapper d32 circular bordered b-info">
+                    <img width="40" height="40" alt="" src="/rostrum/uploads/profile_imgs/{{Request.profile_img}}" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" >
+                  </div>
+                  
+                  <div class="checkbox  no-margin p-l-10">
+                    <input type="checkbox" value="1" id="emailcheckbox-0-0">
+                    <label for="emailcheckbox-0-0"></label>
+                  </div>
+                  <div class="inline m-l-15">
+                    
+                    <p class="recipients no-margin hint-text small" ng-bind="(Request.firstname) +' '+ (Request.lastname)"></p>
+                    <p class="subject no-margin" ng-bind="Request.title"></p>
+                  </div>
+                  <div class="datetime" ng-bind="Request.created"></div>
+                  <div class="clearfix"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END SPLIT LIST VIEW -->
+        <!-- START SPLIT DETAILS -->
+        <div data-email="opened" class="split-details">
+          
+          <div class="no-result" ng-show="!Tution">
+            <h1>No Request Selected</h1>
+          </div>
+
+          <div class="email-content-wrapper" ng-show="Tution">
+            
+            <div class="email-content">
+              <div class="email-content-header">
+                <div class="thumbnail-wrapper d48 circular bordered">
+                  <img width="40" height="40" alt="{{Tution.fullname}}" data-src-retina="/rostrum/uploads/profile_imgs/{{Tution.profile_img}}" data-src="/rostrum/uploads/profile_imgs/{{Tution.profile_img}}" src="/rostrum/uploads/profile_imgs/{{Tution.profile_img}}" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" >
+                </div>
+                <div class="sender inline m-l-10">                  
+                  <p class="name no-margin bold" 
+                  ng-bind="(Tution.firstname) +' '+(Tution.lastname)">
+                  </p>
+                  <h5 class="small hint-text m-t-0 m-b-0"><i class="fa fa-calendar m-r-5 m-t-5 fs-14"></i> Posted at {{Tution.date}} {{Tution.time}}</h5>
+                </div>                
+                <div class="clearfix"></div>  
+                <div class="subject m-t-20 m-b-20 semi-bold" ng-bind="Tution.title"></div>
+              </div>              
+              <div class="clearfix"></div>              
+              <div class="email-content-body m-b-10" ng-bind="Tution.description"></div>          
+              <div class="clearfix"></div>
+              <div class="row">
+                <div class="col-md-12 request-detail-items">
+                  <div class="col-md-6 no-padding">                   
+                    <p class="request-item-title">
+                      <span class="item-title">Subject</span>
+                      <span class="request-item" ng-bind="Tution.subject_name"></span>
+                    </p>
+                    <p class="request-item-title">
+                      <span class="item-title">Preffered day and time</span>
+                      <span class="request-item" ng-bind="Tution.day_and_time"></span>
+                    </p>
+                    <p class="request-item-title">
+                      <span class="item-title">Level</span>
+                      <span class="request-item" ng-bind="Tution.level_name"></span>
+                    </p>                    
+                  </div>
+                  <div class="col-md-6">
+                    <p class="request-item-title">
+                      <span class="item-title">Hours</span>
+                      <span class="request-item" ng-bind="Tution.hours"></span>
+                    </p>
+                    <p class="request-item-title">
+                      <span class="item-title">Tier</span>
+                      <span class="request-item" ng-bind="'Tier ' + Tution.tier"></span>
+                    </p>
+                    <p class="request-item-title">
+                      <span class="item-title">Post Code</span>
+                      <span class="request-item" ng-bind="Tution.post_code"></span>
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="col-lg-12 clearfix" ng-show="Tution.extra_info">
+                  <p class="request-item-title">
+                    <span class="item-title">Extra Information</span>
+                  </p>
+                  <p ng-bind="Tution.extra_info"></p>
+                </div>
+              </div>
+              
+              <div class="clearfix"></div>
+
+              <h4 class="fs-18 m-t-30 m-b-10 text-primary fw-600" ng-show="Tution.status == 1">Assigned to</h4>      
+              <div class="row" ng-show="Tution.status == 1">
+
+                
+                <div class="col-lg-4 same-job m-t-20">
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <a href="#">
+                      <img data-src-retina="/rostrum/uploads/profile_imgs/{{assignedTutor.profile_img}}" data-src="/rostrum/uploads/profile_imgs/{{assignedTutor.profile_img}}" alt="" src="/rostrum/uploads/profile_imgs/{{assignedTutor.profile_img}}" height="54" width="54" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" >
+                    </a>
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <h5 class="semi-bold m-t-5 m-b-0" ng-bind="(assignedTutor.firstname +' '+ assignedTutor.lastname)"></h5>
+                    <!-- <p class="fs-14 hint-text m-t-0 m-b-10">Expert French Tutor</p> -->
+                  </div>
+
+             
+                  <div class="col-lg-12 m-t-30">
+                    <a class="btn btn-xs btn-primary fs-12 text-uppercase text-white" ng-click="open('lg', '', 'tutorDetails.html', assignedTutor, 'assign_to_tutor')">
+                      <i class="fa fa-eye">&nbsp;</i> View Details
+                    </a>
+                  </div>
+                </div>
+             
+
+
+              </div>
+              <div class="clearfix"></div>    
+
+              <h4 class="fs-18 m-t-30 m-b-10 text-primary fw-600" ng-show="specifiedTutor">Tutor requested by Student</h4>      
+              <div class="row" ng-show="specifiedTutor">
+                <div class="col-lg-4 same-job m-t-20">
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <a href="#">
+                      <img data-src-retina="/rostrum/uploads/profile_imgs/{{specifiedTutor.profile_img}}" data-src="/rostrum/uploads/profile_imgs/{{specifiedTutor.profile_img}}" alt="" src="/rostrum/uploads/profile_imgs/{{specifiedTutor.profile_img}}" height="54" width="54" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" >
+                    </a>
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <h5 class="semi-bold m-t-5 m-b-0" ng-bind="(specifiedTutor.firstname +' '+ specifiedTutor.lastname)"></h5>
+                    <!-- <p class="fs-14 hint-text m-t-0 m-b-10">Expert French Tutor</p> -->
+                  </div>
+
+             
+                  <div class="col-lg-12 m-t-30">
+                    <a class="btn btn-xs btn-primary fs-12 text-uppercase text-white" ng-click="open('lg', '', 'tutorDetails.html', specifiedTutor, 'assign_to_tutor')">
+                      <i class="fa fa-eye">&nbsp;</i> View Details
+                    </a>
+                  </div>
+                </div>
+             
+
+
+              </div>
+              <div class="clearfix"></div>    
+
+
+              <h4 class="fs-18 m-t-30 m-b-10 text-primary fw-600" ng-show="appliedTutors.length">People applied for this job</h4>
+              <div class="row" ng-show="appliedTutors.length">
+
+                
+                <div class="col-lg-4 same-job m-t-20" ng-repeat="Tutor in appliedTutors">
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <a href="#">
+                      <img data-src-retina="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" data-src="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" alt="" src="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" height="54" width="54" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" >
+                    </a>
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <h5 class="semi-bold m-t-5 m-b-0" ng-bind="(Tutor.firstname +' '+ Tutor.lastname)"></h5>
+                    <!-- <p class="fs-14 hint-text m-t-0 m-b-10">Expert French Tutor</p> -->
+                  </div>
+
+             
+                  <div class="col-lg-12 m-t-30">
+                    <a class="btn btn-xs btn-primary fs-12 text-uppercase text-white" ng-click="open('lg', '', 'tutorDetails.html', Tutor, 'assign_to_tutor')">
+                      <i class="fa fa-eye">&nbsp;</i> View Details
+                    </a>
+                  </div>
+                </div>
+             
+
+
+              </div>
+              <div class="clearfix"></div>  
+             
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>    
+  </div>  
+</div>
+
+</div>

@@ -1,0 +1,63 @@
+<div id="myCalendar" class="full-height container-fluid container-fixed-lg"></div>
+  <!-- END Calendar -->
+  <!-- START Calendar Events Form -->
+  <div class="quickview-wrapper calendar-event" id="calendar-event">
+    <div class="view-port clearfix" id="eventFormController">
+      <div class="view bg-white">
+        <div class="scrollable">
+          <div class="p-l-30 p-r-30 p-t-20">
+            <a class="pg-close text-master link pull-right" data-toggle="quickview" data-toggle-element="#calendar-event" data-href="#"></a>
+            <h4 id="event-date">&amp;</h4>
+            <div class="m-b-20">
+              <i class="fa fa-clock-o"></i>
+              <span id="lblfromTime"></span> to
+              <span id="lbltoTime"></span>
+            </div>
+          </div>
+          <div class="p-t-15">
+            <input id="eventIndex" name="eventIndex" type="hidden">
+            <div class="form-group-attached">
+              <div class="form-group form-group-default ">
+                <label>Title</label>
+                <!-- <input type="text" class="form-control" ng-model="Schedule.title" id="txtEventName" name="title" placeholder="event name"> -->
+                <p ng-bind="Schedule.title"></p>
+              </div>
+              
+              <div class="row clearfix">
+                <div class="form-group form-group-default">
+                  <label>Description</label>
+                  <!-- <textarea class="form-control" ng-model="Schedule.description" name="description" placeholder="description" id="txtEventDesc"></textarea> -->
+                  <p ng-bind="Schedule.description"></p>
+                </div>
+              </div>
+
+              <div class="row clearfix">
+                <div class="form-group form-group-default show-helpers">
+                  <label>Tution</label>
+                  <!-- <input class="form-control" type="text" name="tution" ng-model="Schedule.tutionData" uib-typeahead="tution as (tution.title) for tution in userTutions | filter:$viewValue | limitTo:8" id="tutionId"> -->
+                  <p ng-bind="Schedule.tutionData.title"></p>
+                </div>
+              </div>
+              <!-- <div class="row clearfix cursor">
+                <div class="form-group form-group-default" data-navigate="view" data-view-port="#eventFormController" data-view-animation="push-parrallax">
+                  <label>Alerts</label>
+                  <div class="p-t-10">
+                    <span class="pull-right p-r-10 p-b-5"><i class="pg-arrow_right"></i></span>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="p-l-30 p-r-30 p-t-30" ng-show="Schedule.schedule_status != 1">
+            <button ng-click="update_event_status(2)" class="btn btn-danger btn-cons" ng-show="Schedule.schedule_status == 0">
+              Decline Tution
+            </button>
+            <button ng-click="update_event_status(0)" class="btn btn-primary btn-cons" ng-show="Schedule.schedule_status == 2">
+              Approve Tution
+            </button>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

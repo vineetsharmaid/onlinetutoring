@@ -1,0 +1,143 @@
+<div class="panel panel-transparent">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+  <div class="profile-thumb col-md-3 no-padding">
+    <div class="panel panel-default mh-800">
+      <div class="panel-body">
+        <div class="profile-img">
+          <!-- <span class="fs-12"><i class="fa fa-check"></i> Verified</span> -->
+          <img alt="Profile Thumb" src="/rostrum/uploads/profile_imgs/{{Feed.profile_img}}" onerror="this.src='/rostrum/uploads/profile_imgs/male-default-avatar.png';" class="img-responsive">
+        </div>
+        <h5 class="semi-bold m-t-0 m-b-5" ng-bind="Feed.fullName"></h5>
+        <span class="bold">
+          <span class="icon-muted fs-14">
+            <i class="fa fa-map-marker"></i>
+          </span> 
+          {{Feed.city_name}}, {{Feed.country_name}}
+        </span>
+        <hr />
+<!--         <div class="rating">
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star-half-o"></i></span>
+          <span class="rate-count bold">4.5 <a href="_">(22 Reviews)</a></span>
+        </div>
+        <hr /> -->
+        <dl class="dl-horizontal m-t-10 m-b-10">
+          <dt class="m-t-5"><i class="fa fa-book text-theme-colored mt-5 font-15"></i></dt>
+          <dd>
+          <h5 class="m-t-0 m-b-0 semi-bold">Subject:</h5>
+          <p class="no-margin" ng-bind="Feed.subject_name"></p>
+          </dd>
+        </dl>
+        <hr />
+        <dl class="dl-horizontal m-t-10 m-b-10">
+          <dt class="m-t-5"><i class="fa fa-graduation-cap text-theme-colored mt-5 font-15"></i></dt>
+          <dd>
+          <h5 class="m-t-0 m-b-0 semi-bold">Grade level:</h5>
+          <p class="no-margin" ng-bind="Feed.level_name"></p>
+          </dd>
+        </dl>
+        <hr />
+        <dl class="dl-horizontal m-t-10 m-b-10">
+          <dt class="m-t-5"><i class="fa fa-building-o text-theme-colored mt-5 font-15"></i></dt>
+          <dd>
+          <h5 class="m-t-0 m-b-0 semi-bold">Tution Method:</h5>
+          <p class="no-margin" ng-if="Feed.tution_method == 1">
+          Online Tutoring</p>
+          <p class="no-margin" ng-if="Feed.tution_method == 2">Face to Face Tutoring</p>
+          <p class="no-margin" ng-if="Feed.tution_method == 3">Other</p>
+          </dd>
+        </dl>
+        <!-- <hr /> -->
+      </div>
+    </div>
+  </div>
+  <div class="profile-setting col-md-8 no-padding mh-800 bg-white">
+    <div class="bg-white">
+      <div class="padding-20" ng-class="{'m-t-25': Feed.tutor_id}">
+        <div class="row row-same-height">
+          <div class="col-md-12">
+          <div class="alert alert-info" ng-show="Feed.tutor_id">
+            <strong> You have already applied on this job.</strong>
+          </div>
+            <div class="p-l-30">
+              <h2 ng-bind="Feed.title"></h2>
+              <h5 class="small hint-text m-t-0 m-b-0"><i class="fa fa-calendar m-r-5 m-t-5 fs-14"></i> Posted at {{Feed.date}} {{Feed.time}}</h5>
+              <hr class="m-t-10 m-b-10">
+              <div class="row">
+                <div class="col-lg-12">
+                  <p class="request-item-title">
+                    <span class="item-title">Description</span>
+                  </p>
+                  <p class="m-b-20" ng-bind="Feed.description"></p>
+                  <hr class="m-t-10 m-b-20">
+                </div>
+
+                <div class="col-md-6">
+                  <p class="request-item-title">
+                    <span class="item-title">Subject</span>
+                    <span class="request-item" ng-bind="Feed.subject_name">Physics</span>
+                  </p>
+                  <p class="request-item-title">
+                    <span class="item-title">Preffered day and time</span>
+                    <span class="request-item" ng-bind="Feed.day_and_time"></span>
+                  </p>
+                  <p class="request-item-title">
+                    <span class="item-title">Level</span>
+                    <span class="request-item" ng-bind="Feed.level_name"></span>
+                  </p>                    
+                </div>
+                <div class="col-md-6">
+                  <p class="request-item-title">
+                    <span class="item-title">Hours</span>
+                    <span class="request-item" ng-bind="Feed.hours"></span>
+                  </p>
+                  <p class="request-item-title">
+                    <span class="item-title">Tier</span>
+                    <span class="request-item" ng-bind="'Tier ' + Feed.tier"></span>
+                  </p>
+                  <p class="request-item-title">
+                    <span class="item-title">Post Code</span>
+                    <span class="request-item" ng-bind="Feed.post_code"></span>
+                  </p>
+                </div>
+
+                <div class="col-lg-6 clearfix" ng-show="Feed.extra_info">
+                  <p class="request-item-title">
+                    <span class="item-title">Extra Information</span>
+                  </p>
+                  <p ng-bind="Feed.extra_info"></p>
+                </div>
+
+                <div class="col-lg-6 clearfix" ng-show="Feed.assigned_to != 0">
+                  <p class="request-item-title">
+                    <span class="item-title">Assigned Tutor</span>
+                  </p>
+                  <p>{{Feed.firstname}} {{Feed.lastname}}</p>
+                </div>
+                
+                <div class="col-lg-6 clearfix" ng-show="Feed.assigned_to != 0">
+                  <p class="request-item-title">
+                    <span class="item-title">Assigned Tutor Email</span>
+                  </p>
+                  <p ng-bind="Feed.email"></p>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row m-t-25">
+      <div class="col-sm-12">
+        <a href="#/" ng-click="getFeeds( currentFeedType )" class=" pull-right btn btn-primary btn-cons btn-animated from-left fa fa-hand-o-left">
+          <span>Back</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1296 @@
+<div class="panel panel-transparent admin-data">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+  <div class="profile-thumb col-md-3 sm-no-padding">
+    <div class="panel panel-default m-t-25">
+      <div class="panel-heading">
+        <div class="panel-title">User Profile</div>
+        <div class="profile-img">
+          <!-- button for changing image -->
+          <span id="changeProfileImage">
+            <i class="fa fa-pencil"></i>
+          </span>
+          
+          <!-- image preview element -->
+          <img alt="Profile Thumb" src="./uploads/profile_imgs/{{Tutor.profile_img}}" onerror="this.src='./uploads/profile_imgs/male-default-avatar.png';" class="img-responsive" id="proImage">
+          <!-- hidden field to change image -->
+          <input type="file" name="profile_image" id="imageInput" onchange="readURL(this)" class="hiden">
+          
+          
+        </div>
+      </div>
+      <div class="panel-body">
+        <h3><span class="semi-bold" ng-bind="(Tutor.firstname) +' '+ ( Tutor.lastname )"></span></h3>
+        <!-- <h5 class="bold text-primary"><span class="icon-muted fs-14"><i class="fa fa-certificate"></i></span> Expert Mathematician</h5> -->
+        <span class="bold"><span class="icon-muted fs-14"><i class="fa fa-map-marker"></i></span> {{Tutor.city_name}}, {{Tutor.country_name}}</span>
+        
+        <!-- <h5 class="semi-bold"><span class="icon-muted fs-14"><i class="fa fa-trophy"></i></span> 120 hours tutoring 25 students</h5>
+        <div class="rating">
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star-half-o"></i></span>
+          <span class="rate-count bold">4.5 <a href="_">(22 Reviews)</a></span>
+        </div>
+        <span class="bold"><span class="icon-muted fs-14"><i class="fa fa-magic"></i></span> 10 Years of Experience</span>
+        <h5 class="semi-bold"><span class="icon-muted fs-14"><i class="fa fa-trophy"></i></span> "Milken Educator Award" Winner</h5> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-setting col-md-9 sm-no-padding">
+    <!-- load view by angularjs -->
+
+  <div class="alert alert-danger" ng-show="Tutor.status == 0">
+    <strong> Please fill your information in below fields to get your account approved.</strong>
+  </div>
+  
+  <div class="alert alert-info" ng-show="Tutor.status == 2">
+    <strong> Thanks for providing your information. The account is being reviewed and you will be notified soon regarding updates.</strong>
+  </div>
+  
+  <div id="rootwizard" class="m-t-20">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm">
+      <!-- <li class="active">
+        <a data-toggle="tab" href="#tab1"><i class="fa fa-user tab-icon"></i> <span>Overview</span></a>
+      </li> -->
+      <li class="active disabled">
+        <a data-toggle="tab" href="/#tab2"><i class="fa fa-bank tab-icon"></i> <span>Personal details</span></a>
+      </li>
+      <li class="disabled">
+        <a data-toggle="tab" href="/#tab3"><i class="fa fa-book tab-icon"></i> <span>Qualification details</span></a>
+      </li>
+      <li class="disabled">
+        <a data-toggle="tab" href="/#tab4"><i class="fa fa-trophy tab-icon"></i> <span>Further Information</span></a>
+      </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      
+    
+      <div class="tab-pane slide-left active padding-20" id="tab2">
+        <div class="row row-same-height">
+          <div class="col-md-12">
+            <div class="padding-30 p-b-0">
+              <h2>Your Personal Details</h2>
+              <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <form id="tutor-profile" class="form-psetting form-horizontal auth-form" role="form" name="tutorProfileForm" ng-submit="saveTutorProfile()" autocomplete="off" novalidate >
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">First Name</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="text" class="form-control" id="fname" ng-model="Tutor.firstname" name="firstname" placeholder="First name" ng-required="true">
+                        <span class="errors" ng-show="tutorProfileForm.firstname.$dirty && tutorProfileForm.firstname.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.firstname"></p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="lname" class="col-sm-3 control-label required">Last Name</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="text" class="form-control" id="lname" ng-model="Tutor.lastname" name="lastname"  placeholder="Last name" ng-required="true">
+                        <span class="errors" ng-show="tutorProfileForm.lastname.$dirty && tutorProfileForm.lastname.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.lastname"></p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label class="col-sm-3 control-label required">Gender</label>
+                    
+                    <div class="col-sm-9" ng-show="Tutor.status == 0">
+                      <div class="radio radio-primary">
+                        <input type="radio" ng-model="Tutor.gender" ng-value="0" name="gender" id="male" required="true">
+                        <label for="male">Male</label>
+                        <input type="radio" ng-model="Tutor.gender" ng-value="1" name="gender" id="female" required="true">
+                        <label for="female">Female</label>
+                        <span class="errors" ng-show="tutorProfileForm.gender.$dirty && tutorProfileForm.gender.$error.required">This field is required</span>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-9" ng-show="Tutor.status != 0">
+                      <p ng-bind="Tutor.gender == '0' ? 'Male' : 'Female'"></p>
+                    </div>
+                      
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Date of Birth</label>
+                      
+                      <!-- Datepicker -->
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Tutor.dob" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" name="dob" ng-focus="open1()" ng-value="Tutor.dob"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </p>
+                        <span class="errors" ng-show="tutorProfileForm.dob.$dirty && tutorProfileForm.dob.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.nice_dob"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Primary Email</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="email" class="form-control" id="p-mail" ng-model="Tutor.email" name="pEmail" placeholder="Primary Email Addresss" ng-required="true">
+                        <span class="errors" ng-show="tutorProfileForm.pEmail.$dirty && tutorProfileForm.pEmail.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.email"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label">Secondary Email</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="email" class="form-control" id="s-mail" ng-model="Tutor.secondary_email" name="secondary_email" placeholder="Secondary Email Addresss">
+                        <!-- <span class="errors" ng-show="tutorProfileForm.secondary_email.$dirty && tutorProfileForm.secondary_email.$error.required">This field is required</span> -->
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.secondary_email"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Primary Phone Number</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="text" class="form-control" id="p-num" ng-model="Tutor.phone" name="pPhone"  placeholder="Primary Phone Number" ng-required="true">
+                        <span class="errors" ng-show="tutorProfileForm.pPhone.$dirty && tutorProfileForm.pPhone.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.phone"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label">Secondary Phone Number</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="text" class="form-control" id="s-num" ng-model="Tutor.secondary_phone" name="secondary_phone" placeholder="Secondary Phone Number">
+                        <!-- <span class="errors" ng-show="tutorProfileForm.secondary_phone.$dirty && tutorProfileForm.secondary_phone.$error.required">This field is required</span> -->
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.secondary_phone"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label">How did you find out about Rostrum?</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <select class="cs-select cs-skin-slide cs-transparent form-control no-padding" ng-model="Tutor.how_abt_rostrum" name="how_abt_rostrum" data-init-plugin="cs-select">
+                          <option value="">
+                            Select
+                          </option>
+                          <option value="Google">
+                            Google
+                          </option>
+                          <option value="Facebook">
+                            Facebook
+                          </option>
+                          <option value="Newspaper">
+                            Newspaper
+                          </option>
+                          <option value="Magazine">
+                            Magazine
+                          </option>
+                          <option value="Other">
+                            Other
+                          </option>
+                        </select>
+
+                        <!-- <textarea class="form-control" id="name" ng-model="Tutor.how_abt_rostrum" name="how_abt_rostrum" placeholder="Enter your text here : Maximum 100 words allowed."></textarea>
+                        <p class="hint-text small p-t-5">Maximum Allowed: 100 words.</p> -->
+                        <!-- <span class="errors" ng-show="tutorProfileForm.how_abt_rostrum.$dirty && tutorProfileForm.how_abt_rostrum.$error.required">This field is required</span> -->
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="Tutor.how_abt_rostrum"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <!-- <button class="btn btn-primary btn-cons m-t-10" type="submit" ng-disabled="tutorProfileForm.$invalid">  Save Information </button> -->
+
+                <div class="padding-20 bg-white">
+                  <ul class="pager wizard">
+                    <li class="next" style="display: inline;">
+                      <button class="btn btn-primary btn-cons pull-right btn-animated from-left fa fa-book" type="submit" ng-disabled="tutorProfileForm.$invalid" ng-show="Tutor.status == 0">
+                        <span>Next</span>
+                      </button>
+
+                      <button class="btn btn-primary btn-cons pull-right btn-animated from-left fa fa-book" type="submit" ng-show="Tutor.status != 0">
+                        <span>Next</span>
+                      </button>
+                    </li>
+                    
+                  </ul>
+                </div>
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane slide-left padding-20" id="tab3">
+        <div class="row row-same-height">
+          <div class="col-md-12">
+            <div class="padding-30 p-b-0">
+              <h2>Your IB Diploma Details</h2>
+              <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              
+              <form id="diploma-detail" class="form-psetting form-horizontal auth-form" name="formDiplomaDetail" ng-submit="save_diploma_details()" role="form" autocomplete="off">
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Year of graduation</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{yearFormat}}" ng-model="DiplomaDetails.ib_yog" id="ib_yog" is-open="popup1.opened" datepicker-options="yearOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" name="ib_yog" ng-focus="open1()" ng-value="DiplomaDetails.ib_yog"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </p>
+                        <span class="errors" ng-show="formDiplomaDetail.ib_yog.$dirty && formDiplomaDetail.ib_yog.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.nice_ib_yog"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="lname" class="col-sm-3 control-label required">Country of School/College</label>
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <select name="ib_country" class="form-control" ng-model="DiplomaDetails.ib_country" ng-options="country.name for country in Countries" ng-change="getStates(Requirements.country)" required>
+                        </select>
+                        <!-- <input type="text" class="form-control" name="ib_country" ng-model="DiplomaDetails.ib_country"> -->
+                       <!--  <select class="cs-select cs-skin-slide cs-transparent form-control no-padding" ng-model="DiplomaDetails.ib_country" id="ib_country" name="ib_country" data-init-plugin="cs-select">
+                          
+                        </select> -->
+                        <span class="errors" ng-show="formDiplomaDetail.ib_country.$dirty && formDiplomaDetail.ib_country.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.ib_country"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Name of School/College</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="text" class="form-control" id="ib_college" ng-model="DiplomaDetails.ib_college" name="ib_college" placeholder="Name of School/College" ng-required="true">
+                        <span class="errors" ng-show="formDiplomaDetail.ib_college.$dirty && formDiplomaDetail.ib_college.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.ib_college"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Final IB Score</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="number" class="form-control" ng-model="DiplomaDetails.final_ib_score" id="final_ib_score" name="final_ib_score" ng-value="DiplomaDetails.final_ib_score" placeholder="Enter a number between 0 and 45." ng-required="true" min="0" max="45">
+                        <span class="errors" ng-show="formDiplomaDetail.final_ib_score.$dirty && formDiplomaDetail.final_ib_score.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.final_ib_score"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-t-10 p-b-10">
+                  <h4>Your IB Subjects</h4>
+                  <p class="small hint-text">Please indicate your IB Subjects below. Note that we generally require you to have scored at least a 6 and in most cases a 7 in any subject you wish to tutor. Naturally, the more subjects you are able to teach, the greater the possibility that we will be able to offer you an opportunity to tutor with us.</p>
+                </div>
+                
+                <!-- Subject 1 -->
+                <div class="subject-accordian">
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <!-- panel 1 -->
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                          <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <span class="fs-12 bold text-primary">Subject 1</span><br>
+                            <!-- <span class="language-sub m-t-10">Language A</span> -->
+                          </a>
+                          </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                          <div class="panel-body">
+                            
+                          <input type="hidden" name="tutor_subject_id" ng-model="IBsubjects.SubjectGroup1.tutor_subject_id" value="1">
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+
+                                  <label for="fname" class="col-sm-3 control-label required" ng-show="Tutor.status == 0">Please select a Subject</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup1.subject_id" required>
+                                      <option value="">Select a subject</option>
+                                      <option ng-repeat="Subject1 in Subjects1" value="{{Subject1.subject_id}}">{{Subject1.subject_name}}</option>
+                                    </select>
+                                  </div>
+                                  
+
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status != 0">Subject</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-repeat="Subject1 in Subjects1">
+                                      {{Subject1.subject_id == IBsubjects.SubjectGroup1.subject_id ? Subject1.subject_name : ''}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label">Subject Level</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <div class="radio radio-primary">
+                                      <input type="radio" value="1" name="optionyes1" id="HL1"  ng-model="IBsubjects.SubjectGroup1.subject_level">
+                                      <label for="HL1">HL</label>
+                                      <input type="radio" value="2" name="optionyes1" id="SL1" ng-model="IBsubjects.SubjectGroup1.subject_level">
+                                      <label for="SL1">SL</label>
+                                    </div>
+                                  </div>
+                                 
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p>
+                                      {{IBsubjects.SubjectGroup1.subject_level == 1 ? 'HL' : 'SL'}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label">Subject Score</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup1.subject_score">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                    </select>
+                                  </div>
+
+
+
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-bind="IBsubjects.SubjectGroup1.subject_score"></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label">Would you like to teach your subject?</label>
+                                  
+
+                                  <div class="col-sm-9">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup1.teaching_level" ng-disabled="Tutor.status != 0">
+                                      <option value="0">Yes, at both HL and SL</option>
+                                      <option value="1">Yes, at SL only</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                    <p class="hint-text small p-t-5">Please indicate whether you would like to teach the subject at both HL and SL, at SL only or not at all.?</p>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- panel 2 -->
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                          <h4 class="panel-title">
+                          <a class="collapsed" data-toggle="collapse" data-parent="#accordion"  data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span class="fs-12 bold text-primary">Subject 2</span><br>
+                            <!-- <span class="language-sub m-t-10">Language A</span> -->
+                          </a>
+                          </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                          <div class="panel-body">
+                            
+                            <!-- <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status == 0">Please select a Group</label>
+                                  
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup2.sGroup_id" ng-change="getSubjects('Subjects2', 2, 'sGroup_id')" required>
+                                      <option value="">Select a group</option>
+                                      <option ng-repeat="Group2 in Groups" value="{{Group2.sGroup_id}}">
+                                        {{Group2.group_name}}
+                                      </option>
+                                    </select>
+                                  </div>
+
+
+
+
+
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status != 0">Group</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-repeat="Group2 in Groups">
+                                      {{Group2.sGroup_id == IBsubjects.SubjectGroup2.sGroup_id ? Group2.group_name : ''}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div> -->
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <label for="fname" class="col-sm-3 control-label required" ng-show="Tutor.status == 0">Please select a Subject</label>
+                                  
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup2.subject_id" required>
+                                      <option value="">Select a subject</option>
+                                      <option ng-repeat="Subject2 in Subjects2" value="{{Subject2.subject_id}}">{{Subject2.subject_name}}</option>
+                                    </select>
+                                  </div>
+
+
+
+
+
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status != 0">Subject</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-repeat="Subject2 in Subjects2">
+                                      {{Subject2.subject_id == IBsubjects.SubjectGroup2.subject_id ? Subject2.subject_name : ''}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label">Subject Level</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <div class="radio radio-primary">
+                                      <input type="radio" value="1" name="optionyes2" id="HL2" ng-model="IBsubjects.SubjectGroup2.subject_level">
+                                      <label for="HL2">HL</label>
+                                      <input type="radio" value="2" name="optionyes2" id="SL2" ng-model="IBsubjects.SubjectGroup2.subject_level">
+                                      <label for="SL2">SL</label>
+                                    </div>
+                                  </div>
+
+
+
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p>
+                                      {{IBsubjects.SubjectGroup2.subject_level == 1 ? 'HL' : 'SL'}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label">Subject 2 Score</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup2.subject_score">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                    </select>
+                                  </div>
+
+
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-bind="IBsubjects.SubjectGroup2.subject_score"></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <label for="fname" class="col-sm-3 control-label">Would you like to teach your subject?</label>
+                                  <div class="col-sm-9">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup2.teaching_level" ng-disabled="Tutor.status != 0">  
+                                      <option value="">Select option</option>
+                                      <option value="0">Yes, at both HL and SL</option>
+                                      <option value="1">Yes, at SL only</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                    <p class="hint-text small p-t-5">Please indicate whether you would like to teach the subject at both HL and SL, at SL only or not at all.?</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- panel 3 -->
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                          <h4 class="panel-title">
+                          <a class="collapsed" data-toggle="collapse" data-parent="#accordion"  data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span class="fs-12 bold text-primary">Subject 3</span><br>
+                            <!-- <span class="language-sub m-t-10">Individuals &amp; Societies</span> -->
+                            </a>
+                            </h4>
+                          </div>
+                          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                              
+                            <!-- <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status == 0">Please select a Group</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup3.sGroup_id" ng-change="getSubjects('Subjects3', 3, 'sGroup_id')" required>
+                                      <option value="">Select a group</option>
+                                      <option ng-repeat="Group3 in Groups" value="{{Group3.sGroup_id}}">
+                                        {{Group3.group_name}}
+                                      </option>
+                                    </select>
+                                  </div>
+
+
+
+
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status != 0">Group</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-repeat="Group3 in Groups">
+                                      {{Group3.sGroup_id == IBsubjects.SubjectGroup3.sGroup_id ? Group3.group_name : ''}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div> -->
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label required" ng-show="Tutor.status == 0">Please select a Subject</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup3.subject_id" required>
+                                      <option value="">Select a subject</option>
+                                      <option ng-repeat="Subject3 in Subjects3" value="{{Subject3.subject_id}}">{{Subject3.subject_name}}</option>
+                                    </select>
+                                  </div>
+
+
+
+
+
+                                  <label for="fname" class="col-sm-3 control-label" ng-show="Tutor.status != 0">Subject</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-repeat="Subject3 in Subjects3">
+                                      {{Subject3.subject_id == IBsubjects.SubjectGroup3.subject_id ? Subject3.subject_name : ''}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  
+                                  <label for="fname" class="col-sm-3 control-label">Subject Level</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <div class="radio radio-primary">
+                                      <input type="radio" value="1" name="optionyes3" id="HL3" ng-model="IBsubjects.SubjectGroup3.subject_level">
+                                      <label for="HL3">HL</label>
+                                      <input type="radio" value="2" name="optionyes3" id="SL3" ng-model="IBsubjects.SubjectGroup3.subject_level">
+                                      <label for="SL3">SL</label>
+                                    </div>
+                                  </div>
+
+
+
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p>
+                                      {{IBsubjects.SubjectGroup3.subject_level == 1 ? 'HL' : 'SL'}}
+                                    </p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                 
+                                  <label for="fname" class="col-sm-3 control-label">Subject Score</label>
+
+                                  <div class="col-sm-9" ng-show="Tutor.status == 0">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup3.subject_score">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                    </select>
+                                  </div>
+
+
+
+
+                                  <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                    <p ng-bind="IBsubjects.SubjectGroup3.subject_score"></p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <label for="fname" class="col-sm-3 control-label">Would you like to teach your Group 3 subject?</label>
+                                  <div class="col-sm-9">
+                                    <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="IBsubjects.SubjectGroup3.teaching_level" ng-disabled="Tutor.status != 0">
+                                      <option value="0">Yes, at both HL and SL</option>
+                                      <option value="1">Yes, at SL only</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                    <p class="hint-text small p-t-5">Please indicate whether you would like to teach the subject at both HL and SL, at SL only or not at all.?</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                  </div> <!-- /End Panel Group -->
+                </div><!-- /End subject-accordian -->
+
+                <!-- Additional -->
+                <div class="no-padding">
+                  <h5>Additional</h5>
+                  <span class="fs-14">Please complete the additional information about your IB Diploma where appropriate.</span>
+                </div>
+
+                <!-- <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="other-text" class="col-sm-12 control-label p-b-15 p-t-0">If you have indicated "Other" in any of the fields above, please explain here. Also use this box to let us know if you have taken a seventh subject.  </label>
+                      
+                      <div class="col-sm-9 no-padding" ng-show="Tutor.status == 0">
+                        <textarea class="form-control" id="other-text" ng-model="DiplomaDetails.additional_subject_details" name="additional_subject_details" placeholder="Enter your text here"></textarea>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.additional_subject_details"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div> -->
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label">Extended Essay Subject</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <input type="text" class="form-control" id="extended_essay_subject" ng-model="DiplomaDetails.extended_essay_subject" name="extended_essay_subject" placeholder="Extended Essay Subject" ng-required="true">
+                        <span class="errors" ng-show="formDiplomaDetail.extended_essay_subject.$dirty && formDiplomaDetail.extended_essay_subject.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.extended_essay_subject"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label">Extended Essay grade</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="DiplomaDetails.extended_essay_grade" id="extended_essay_grade" name="extended_essay_grade">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="D">D</option>
+                          <option value="E">E</option>
+                          <option value="F">F</option>
+                        </select>
+                        <span class="errors" ng-show="formDiplomaDetail.extended_essay_grade.$dirty && formDiplomaDetail.extended_essay_grade.$error.required">This field is required</span>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <p ng-bind="DiplomaDetails.extended_essay_grade"></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label">Tutoring Opportunities</label>
+                      
+                      <div class="col-sm-9" ng-show="Tutor.status == 0">
+                        <div class="checkbox check-primary">
+                          
+                          <input type="checkbox" ng-model="DiplomaDetails.face_to_face" class="checkng" id="face_to_face" ng-true-value="'1'" ng-false-value="'0'">
+                          <label for="face_to_face">Face to Face</label>
+
+                          <br>
+                          <input type="checkbox" ng-model="DiplomaDetails.revision_courses" class="checkng" id="revision_courses" ng-true-value="'1'" ng-false-value="'0'">
+                          <label for="revision_courses">Revision Courses</label>
+                          
+                          <br>
+                          <input type="checkbox" ng-model="DiplomaDetails.online_private_tution" class="checkng" id="online_private_tution" ng-true-value="'1'" ng-false-value="'0'">
+                          
+                          <label for="online_private_tution">Online Private Tuition</label>
+                          <br>
+                          <input type="checkbox" ng-model="DiplomaDetails.other_tutoring_opportunities" class="checkng" id="other_tutoring_opportunities" ng-true-value="'1'" ng-false-value="'0'">
+                          <label for="other_tutoring_opportunities">Other (e.g. work on creating tutor material)</label>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-9" ng-show="Tutor.status != 0">
+                        <label for="other_tuitoring">Face to Face: </label>
+                        <span ng-bind="DiplomaDetails.face_to_face == '1' ? 'Yes' : 'No'"></span>
+                        <br />
+                        <label for="other_tuitoring">Revision Courses: </label>
+                        <span ng-bind="DiplomaDetails.revision_courses == '1' ? 'Yes' : 'No'"></span>
+                        <br />
+                        <label for="other_tuitoring">Online Private Tuition: </label>
+                        <span ng-bind="DiplomaDetails.online_private_tution == '1' ? 'Yes' : 'No'"></span>
+                        <br />
+                        <label for="other_tuitoring">Other (e.g. work on creating tutor material): </label>
+                        <span ng-bind="DiplomaDetails.other_tutoring_opportunities == '1' ? 'Yes' : 'No'"></span>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                    
+                    <!-- <button class="btn btn-primary btn-cons m-t-10" type="submit">  Save Information </button> -->
+
+                    <div class="padding-20 bg-white">
+                      <ul class="pager wizard">
+                        <li class="next" style="display: inline;">
+                          
+                          <button class="btn btn-primary btn-cons pull-right btn-animated from-left fa fa-book" type="submit" ng-disabled="formDiplomaDetail.$invalid" ng-show="Tutor.status == 0"> 
+                            <span>Next</span>
+                          </button>
+
+                          <button class="btn btn-primary btn-cons pull-right btn-animated from-left fa fa-book" type="submit" ng-show="Tutor.status != 0">
+                            <span>Next</span>
+                          </button>
+                        </li>                        
+                        <li class="previous first hidden">
+                          <button class="btn btn-default btn-cons pull-right fa-user btn-animated from-left fa" type="button">
+                          <span>First</span>
+                          </button>
+                        </li>
+                        <li class="previous">
+                          <button class="btn btn-default btn-cons pull-right fa-user btn-animated from-left fa" type="button">
+                          <span>Previous</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane slide-left padding-20" id="tab4">
+            <div class="row row-same-height">
+              <div class="col-md-12">
+                <div class="padding-30 p-sm-0">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h2>Further information about you</h2>
+                      <p class="small hint-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      
+                      <form id="further-information" class="form-psetting form-horizontal auth-form" name="formFurtherInfo" ng-submit="save_further_info()" role="form" autocomplete="off">
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="uniname" class="col-sm-4 control-label">University or College attending</label>
+                              
+                              <div class="col-sm-8" ng-show="Tutor.status == 0">
+                                <input type="text" class="form-control" ng-model="furtherInfo.university_attending" name="university_attending" name="subject_at_university" id="uniname" placeholder="University or College Name">
+                              </div>
+
+                              <div class="col-sm-8" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.university_attending"></p>
+                              </div>
+                      
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="unisubject" class="col-sm-4 control-label">Subject area of degree</label>
+                              
+                              <div class="col-sm-8" ng-show="Tutor.status == 0">
+                                <input type="text" ng-model="furtherInfo.subject_at_university" name="subject_at_university" class="form-control" id="unisubject" placeholder="Subject">
+                              </div>
+
+                              <div class="col-sm-8" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.subject_at_university"></p>
+                              </div>
+                      
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="fname" class="col-sm-4 control-label">Completed/Expected year of graduation from university</label>
+                              
+                              <div class="col-sm-8" ng-show="Tutor.status == 0">
+                                <p class="input-group">
+                                  <input type="text" class="form-control" uib-datepicker-popup="{{yearFormat}}" ng-model="furtherInfo.expected_univerisity_yog" is-open="popup1.opened" datepicker-options="yearOptions" close-text="Close" name="expected_univerisity_yog" ng-focus="open1()" ng-value="furtherInfo.expected_univerisity_yog"/>
+                                  <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                  </span>
+                                </p>
+                              </div>
+
+                              <div class="col-sm-8" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.expected_univerisity_yog"></p>
+                              </div>
+                      
+                            </div>
+                          </div>
+                        </div>
+                     
+                     <!--    <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="fname" class="col-sm-12 control-label">If you could do something different with regard to your IB revision, what would you change?</label>
+                              
+                              <div class="col-sm-9 p-l-0 p-t-15" ng-show="Tutor.status == 0">
+                                <textarea class="form-control" ng-model="furtherInfo.different_to_ib_revision" name="different_to_ib_revision" id="name" placeholder="Enter your text here : Maximum 300 words allowed." ng-required="true"></textarea>
+                                <p class="hint-text small p-t-5">Maximum Allowed: 300 words.</p>
+                                <span class="errors" ng-show="formFurtherInfo.different_to_ib_revision.$dirty && formFurtherInfo.different_to_ib_revision.$error.required">This field is required</span>
+                              </div>
+
+                              <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.different_to_ib_revision"></p>
+                              </div>
+                      
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="fname" class="col-sm-12 control-label">What did your favourite IB teacher do that made him/her especially good?</label>
+                              
+                              <div class="col-sm-9 p-l-0 p-t-15" ng-show="Tutor.status == 0">
+                                <textarea class="form-control" ng-model="furtherInfo.favorite_ib_teacher" name="favorite_ib_teacher" id="name" placeholder="Enter your text here : Maximum 300 words allowed." ng-required="true"></textarea>
+                                <p class="hint-text small p-t-5 p-t-5 p-t-5">Maximum Allowed: 300 words.</p>
+                                <span class="errors" ng-show="formFurtherInfo.favorite_ib_teacher.$dirty && formFurtherInfo.favorite_ib_teacher.$error.required">This field is required</span>
+                              </div>
+
+                              <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.favorite_ib_teacher"></p>
+                              </div>
+                      
+                            </div>
+                          </div>
+                        </div> -->
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="fname" class="col-sm-12 control-label required">Give us a short description of yourself and what you hope will characterise you as a Rostrum tutor!</label>
+                              
+                              <div class="col-sm-9 p-l-0 p-t-15" ng-show="Tutor.status == 0">
+                                <textarea class="form-control" ng-model="furtherInfo.short_description" name="short_description" id="name" placeholder="Enter your text here : Maximum 300 words allowed." ng-required="true"></textarea>
+                                <p class="hint-text small p-t-5">Maximum Allowed: 300 words.</p>
+                                <span class="errors" ng-show="formFurtherInfo.short_description.$dirty && formFurtherInfo.short_description.$error.required">This field is required</span>
+                              </div>
+
+                              <div class="col-sm-9" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.short_description"></p>
+                              </div>
+                      
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label for="unisubject" class="col-sm-4 control-label required">Counrty in which you will be teaching.</label>
+                              
+                              <div class="col-sm-8" ng-show="Tutor.status == 0">
+                                <input type="text" ng-model="furtherInfo.teaching_country" name="teaching_country" class="form-control" id="unisubject" placeholder="Teaching Country" required>
+                              </div>
+
+                              <div class="col-sm-8" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.teaching_country"></p>
+                              </div>
+                      
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="form-group" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+                          <div class="row">
+                            <div class="col-lg-12">
+
+                              <label for="fname" class="col-sm-4 control-label required" ng-show="Tutor.status == 0">Eligibility</label>
+
+                              <div class="col-sm-8" ng-show="Tutor.status == 0">
+                                <select class="cs-select cs-skin-slide" data-init-plugin="cs-select" ng-model="furtherInfo.eligibility" required>
+                                  <option value="">Select</option>
+                                  <option value="Citizen">Citizen</option>
+                                  <option value="Dual Nationality">Dual Nationality</option>
+                                  <option value="Work Viza">Work Viza</option>
+                                  <option value="Student Viza">Student Viza</option>
+                                  <option value="Business Viza">Business Viza</option>
+                                </select>
+                              </div>
+                            
+                              <label for="fname" class="col-sm-4 control-label" ng-show="Tutor.status != 0">Eligibility</label>
+
+                              <div class="col-sm-8" ng-show="Tutor.status != 0">
+                                <p ng-bind="furtherInfo.eligibility"></p>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="col-sm-4">
+                                <label for="cv" class="col-sm-12 control-label required">Resume</label>
+                              </div>
+                              
+                              <div class="col-sm-8">
+                                <a href="./uploads/resumes/{{Tutor.resume}}" class="btn btn-sm btn-info" target="_blank" ng-show="cvUploaded" ng-class="{'pull-right': Tutor.status == 0}">
+                                  View Uploaded Resume
+                                </a>
+                                <span class="btn btn-default btn-file" ng-show="Tutor.status == 0">
+                                    Upload <input type="file" nv-file-select="" uploader="uploader" />
+                                </span>
+                                
+                                <!-- <span ng-repeat="item in uploader.queue">
+                                  <strong>{{ item.file.name }}</strong>
+                                </span> -->
+
+                                <!-- <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th width="33%">Name</th>
+                                            <th width="33%" ng-show="uploader.isHTML5">Progress</th>
+                                            <th width="33%" ng-show="uploader.isHTML5">Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr ng-repeat="item in uploader.queue">
+                                        <td><strong>{{ item.file.name }}</strong></td>
+                                        <td ng-show="uploader.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+                                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                </table> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+
+                        <!-- <button class="btn btn-primary btn-cons m-t-10" type="submit" ng-disabled="formFurtherInfo.$invalid">  Save Information </button> -->
+
+                        <div class="padding-20 bg-white">
+                          <ul class="pager wizard">
+                            <li class="next" style="display: inline;">
+                              <button class="btn btn-primary btn-cons pull-right btn-animated from-left fa fa-book" type="button">
+                              <span>Next</span>
+                              </button>
+                            </li>
+                            <li class="next finish hidden">
+                              <button class="btn btn-primary btn-cons pull-right btn-animated from-left fa fa-book" type="submit" ng-disabled="formFurtherInfo.$invalid || !cvUploaded" ng-show="Tutor.status == 0">
+                                <span>Finish</span>
+                              </button>
+                            </li>
+                            <li class="previous first hidden">
+                              <button class="btn btn-default btn-cons pull-right fa-user btn-animated from-left fa" type="button">
+                              <span>First</span>
+                              </button>
+                            </li>
+                            <li class="previous">
+                              <button class="btn btn-default btn-cons pull-right fa-user btn-animated from-left fa" type="button">
+                              <span>Previous</span>
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        
+        </div>
+      </div>
+  </div>
+
+
+    <!-- END PANEL -->
+    <!-- <div class="col-lg-3 m-t-25">
+      <div class="row">
+        <div class="col-md-12 m-b-10">
+          <div class="widget-9 panel no-border bg-primary no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading  top-left top-right">
+                    <div class="panel-title text-black">
+                      <span class="font-montserrat fs-11 all-caps text-white">Contact John Doe <i class="fa fa-chevron-right"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="p-l-20 p-t-15">
+                    <h3 class="no-margin p-b-5 text-white">$45/hour</h3>
+                    <a href="#" class="btn-circle-arrow text-white"><i class="fa fa-envelope-o"></i></a>
+                    <span><a class="text-white" href="#">Send a message explaining your needs.</a></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-xs-height">
+                <div class="col-xs-height col-bottom">
+                  <div class="progress progress-small m-b-20">
+                    <div class="progress-bar progress-bar-white" style="width:75%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 m-b-10">
+          <div class="ar-2-3 widget-1-wrapper">
+            <div class="widget-11 panel no-border  no-margin widget-loader-bar">
+              <div class="p-l-15 p-r-15">
+                <h4 class="pull-left semi-bold">Work Schedule</h4>
+                <div class="clearfix"></div>
+              </div>
+              <div class="widget-11-table auto-overflow">
+                <table class="table table-condensed table-hover">
+                  <tbody>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Sun</td>
+                      <td class="text-right"><span class="hint-text small">Unavailable</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Mon</td>
+                      <td class="text-right"><span class="hint-text small">Morning: 8:00 am – 12:00 pm,<br>
+                      Evening: 4:00 pm – 6:30 pm</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Tue</td>
+                      <td class="text-right"><span class="hint-text small">10:00 am – 2:00 pm</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Wed</td>
+                      <td class="text-right"><span class="hint-text small">Unavailable</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Thu</td>
+                      <td class="text-right"><span class="hint-text small">8:00 am – 12:00 pm</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Fri</td>
+                      <td class="text-right"><span class="hint-text small">2:00 pm – 6:30 pm</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-montserrat all-caps fs-12">Sun</td>
+                      <td class="text-right"><span class="hint-text small">Unavailable</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+</div>

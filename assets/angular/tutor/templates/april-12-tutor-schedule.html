@@ -1,0 +1,91 @@
+<div id="myCalendar" class="full-height container-fluid container-fixed-lg"></div>
+  <!-- END Calendar -->
+  <!-- START Calendar Events Form -->
+  <div class="quickview-wrapper calendar-event" id="calendar-event">
+    <div class="view-port clearfix" id="eventFormController">
+      <div class="view bg-white">
+        <div class="scrollable">
+          <div class="p-l-30 p-r-30 p-t-20">
+            <a class="pg-close text-master link pull-right" data-toggle="quickview" data-toggle-element="#calendar-event" href="#"></a>
+            <h4 id="event-date">&amp;</h4>
+            <div class="m-b-20">
+              <i class="fa fa-clock-o"></i>
+              <span id="lblfromTime"></span> to
+              <span id="lbltoTime"></span>
+            </div>
+          </div>
+
+              
+          <form class="form-psetting form-horizontal auth-form" role="form" name="scheduleForm" ng-submit="saveEvent(scheduleForm)" autocomplete="off" novalidate >
+
+
+          <div class="p-t-15">
+            
+            <input id="eventIndex" name="eventIndex" type="hidden">
+
+            <div class="form-group-attached">
+              
+              <div class="form-group form-group-default" ng-class="{'has_errors': scheduleForm.title.$touched && scheduleForm.title.$invalid}">
+                <label>Title</label>
+                
+                <input type="text" class="form-control" ng-model="Schedule.title" name="title" id="txtEventName" required ng-show="Schedule.schedule_status == 0">
+                
+                <p ng-bind="Schedule.title" ng-show="Schedule.schedule_status != 0"></p>
+              </div>
+              
+              <div class="row clearfix">
+                <div class="form-group form-group-default" ng-class="{'has_errors': scheduleForm.description.$touched && scheduleForm.description.$invalid}">
+                  <label>Description</label>
+                  
+                  <textarea class="form-control" ng-model="Schedule.description" name="description" placeholder="description" id="txtEventDesc" required ng-show="Schedule.schedule_status == 0"></textarea>
+                  
+                  <p ng-bind="Schedule.description" ng-show="Schedule.schedule_status != 0"></p>
+                </div>
+              </div>
+
+              <div class="row clearfix">
+                <div class="form-group form-group-default show-helpers" ng-class="{'has_errors': scheduleForm.tution.$touched && scheduleForm.tution.$invalid}">
+                  <label>Tution</label>
+                  
+                  <input class="form-control" type="text" name="tution" ng-model="Schedule.tutionData" uib-typeahead="tution as (tution.title) for tution in userTutions | filter:$viewValue | limitTo:8" id="tutionId" required ng-show="Schedule.schedule_status == 0">
+
+                  <p ng-bind="Schedule.tutionData.title" ng-show="Schedule.schedule_status != 0"></p>
+                </div>
+              </div>
+              
+              <input type="hidden" name="start" ng-model="Schedule.start" value="Schedule.start" required>
+              <input type="hidden" name="end" ng-model="Schedule.end" value="Schedule.end" required>
+              <input type="hidden" name="schedule_id" ng-model="Schedule.schedule_id" value="Schedule.schedule_id">
+
+            </div>
+
+          </div>
+          
+          <div class="p-l-30 p-r-30 p-t-30" ng-show="Schedule.schedule_status == 0">
+            
+            <button class="btn btn-primary btn-cons" ng-disabled="scheduleForm.$invalid">Save Event</button>
+            </button>
+
+          </div>
+          </form>
+          <button id="eventDelete" class="btn btn-primary m-l-15"><i class="fa fa-trash-o"></i>
+        </div>
+      </div>
+      <div class="view bg-white">
+        <div class="navbar navbar-default navbar-sm">
+          <div class="navbar-inner">
+            <a href="javascript:;" class="inline action p-l-10 link text-master" data-navigate="view" data-view-port="#eventFormController" data-view-animation="push-parrallax">
+              <i class="pg-arrow_left"></i>
+            </a>
+            <div class="view-heading">
+              <span class="font-montserrat text-uppercase fs-13">Alerts</span>
+            </div>
+            <a href="#" class="inline action p-r-10 pull-right link text-master">
+              <i class="pg-search"></i>
+            </a>
+          </div>
+        </div>
+        <p class="p-l-30 p-r-30 p-t-30"> This is a Demo</p>
+      </div>
+    </div>
+  </div>

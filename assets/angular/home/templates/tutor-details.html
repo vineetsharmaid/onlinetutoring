@@ -1,0 +1,345 @@
+<div class="section-content">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="thumb">
+        <img src="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" class="img-fullwidth">
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-8">
+      <div class="col-md-6 no-padding">
+        <h4 class="name font-24 mt-0 mb-0" ng-bind="(Tutor.firstname)+' '+(Tutor.lastname)"></h4>
+        <!-- <h5 class="mt-5 text-theme-color-2">Chemistry Teachers</h5> -->
+      </div>
+      <div class="col-md-6 no-padding">
+        <a href="#/" class="btn btn-sm btn-default pull-right">
+          <i class="fa fa-hand-o-left">&nbsp;</i>
+          Back
+        </a>
+        <a data-target="#modalStudentpost" data-toggle="modal" id="btnFillSizeToggler" class="btn btn-sm btn-dark mar-r-10 pull-right" ng-click="getGroups(); getTutors(); getSubjects();">
+          <i class="fa fa-handshake-o">&nbsp;</i>
+          Connect
+        </a>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="col-md-12 mar-t-10 no-padding justified">
+        <p ng-bind="Tutor.short_description"></p>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-30">
+    <div class="col-md-offset-3 col-md-8">
+      <h4 class="line-bottom">About Me:</h4>
+      <div class="volunteer-address">
+        <ul>
+          <li>
+            <div class="bg-light media border-bottom p-15 mb-20">
+              <div class="media-left">
+                <i class="fa fa-map-marker text-theme-colored font-24 mt-5"></i>
+              </div>
+              <div class="media-body">
+                <h5 class="mt-0 mb-0">Location:</h5>
+                <p ng-bind="Tutor.city"></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="bg-light media border-bottom p-15 mb-20">
+              <div class="media-left">
+                <i class="pe-7s-pen text-theme-colored font-24 mt-5"></i>
+              </div>
+              <div class="media-body">
+                <h5 class="mt-0 mb-0">Institute Attended:</h5>
+                <p ng-show="Tutor.ib_college">
+                  <span ng-bind="'IB College - '+Tutor.ib_college"></span>
+                </p>
+                <p ng-show="Tutor.university_attending">
+                  <span ng-bind="'University - '+Tutor.university_attending"></span>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="bg-light media border-bottom p-15">
+              <div class="media-left">
+                <i class="fa fa-phone text-theme-colored font-24 mt-5"></i>
+              </div>
+              <div class="media-body">
+                <h5 class="mt-0 mb-0">Availability:</h5>
+                <p>
+                  <label for="other_tuitoring">Face to Face Tution - </label>
+                  <span ng-bind="Tutor.face_to_face == '1' ? 'Yes' : 'No'"></span>
+                  <br />
+                  <label for="other_tuitoring">Revision Courses - </label>
+                  <span ng-bind="Tutor.revision_courses == '1' ? 'Yes' : 'No'"></span>
+                  <br />
+                  <label for="other_tuitoring">Online Private Tuition - </label>
+                  <span ng-bind="Tutor.online_private_tution == '1' ? 'Yes' : 'No'"></span>
+                  <br />
+                  <label for="other_tuitoring">Other (e.g. work on creating tutor material) - </label>
+                  <span ng-bind="Tutor.other_tutoring_opportunities == '1' ? 'Yes' : 'No'"></span>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+<!--     <div class="col-md-6">
+      <h4 class="line-bottom">Find Location:</h4>
+      
+      <div
+        data-address="121 King Street, Melbourne Victoria 3000 Australia"
+        data-popupstring-id="#popupstring1"
+        class="map-canvas autoload-map"
+        data-mapstyle="style1"
+        data-height="335"
+        data-latlng="22.798835,89.534401"
+        data-title="sample title"
+        data-zoom="14"
+        data-marker="images/map-marker.png">
+      </div>
+      <div class="map-popupstring hidden" id="popupstring1">
+        <div class="text-center">
+          <h3>CharityFund Office</h3>
+          <p>121 King Street, Melbourne Victoria 3000 Australia</p>
+        </div>
+      </div>
+      
+      <script src="http://maps.google.com/maps/api/js"></script>
+      <script src="/rostrum/assets/js/google-map-init.js"></script>
+    </div> -->
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade fill-in" id="modalStudentpost" tabindex="-1" role="dialog" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+  <i class="pg-close"></i>
+  </button>
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="text-left p-b-5"><span class="semi-bold">Post A Requirement</span></h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <!-- START PANEL -->
+            <div class="panel panel-transparent">
+              <div class="panel-body">
+                <form id="form-project" class="auth-form" name="addPostForm" ng-submit="saveRequirement()" role="form" autocomplete="off" novalidate >
+                  <p>Basic Information</p>
+                  <div class="form-group-attached">
+                    <!-- <div class="row clearfix"> -->
+                      <!-- <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>Name</label>
+                          <input type="text" class="form-control" ng-model="Requirements.fullName" name="name" required>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>Contact No.</label>
+                          <input type="text" class="form-control" ng-model="Requirements.phone" name="phone" required>
+                        </div>
+                      </div>
+                    <div class="form-group form-group-default required">
+                      <label>Email</label>
+                      <input type="email" class="form-control" ng-model="Requirements.email" name="Email" required>
+                    </div>
+
+                    <div class="form-group form-group-default required">
+                      <label>Address</label>
+                      <textarea class="form-control" placeholder="Enter your address" ng-model="Requirements.address" name="address" required></textarea>
+                    </div> -->
+                    
+                    <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>First Name</label>
+                          <input type="text" class="form-control" ng-model="Requirements.firstname" name="firstname" required>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>Last Name</label>
+                          <input type="text" class="form-control" ng-model="Requirements.lastname" name="lastname" required>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default srch-drpdwn required">
+                          <label>Phone Code</label>
+                          <select name="phonecode" class="form-control" ng-model="Requirements.phonecode" ng-options="'+'+country.phonecode+'( '+country.name+' )' for country in Countries" required></select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding" ng-init="getCountries()">
+                        <div class="form-group form-group-default required">
+                          <label>Contact No.</label>
+                          <input type="text" class="form-control" ng-model="Requirements.phone" name="phone" required>
+                        </div>
+                      </div>
+
+                      <diiv class="clearfix"></diiv>
+
+                      <div class="col-sm-6 no-padding">                      
+                        <div class="form-group form-group-default required">
+                          <label>Email</label>
+                          <input type="email" class="form-control" ng-model="Requirements.email" name="Email" required>
+                        </div>
+                      </div>
+
+                    <!-- </div> -->
+
+                  <!-- <div class="row"> -->
+                    <div class="col-sm-6 no-padding">
+                      <div class="form-group form-group-default srch-drpdwn required">
+                        <label>Country</label>
+                        <select name="country" class="form-control" ng-model="Requirements.country" ng-options="country.name for country in Countries" ng-change="getStates(Requirements.country)" required>
+                        </select>
+                      </div>
+                    </div>
+                  <!-- </div> -->
+                  <!-- <div class="row"> -->
+                    <div class="col-sm-6 no-padding">
+                      <div class="form-group form-group-default srch-drpdwn required">
+                        <label>State</label>
+                        <select name="state" class="form-control" ng-model="Requirements.state" ng-options="state.name for state in States" ng-change="getCities(Requirements.state)" required>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 no-padding">
+                      <div class="form-group form-group-default srch-drpdwn required">
+                        <label>City</label>
+                        <select name="city" class="form-control" ng-model="Requirements.city" ng-options="city.name for city in Cities" required>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="m-t-10">Advanced Information</p>
+                  <div class="form-group-attached">
+                    <div class="form-group form-group-default required">
+                      <label>Title</label>
+                      <textarea class="form-control" placeholder="Enter title for requirement" ng-model="Requirements.title" name="title" rows="1" required></textarea>
+                    </div>
+                    
+                    <div class="form-group form-group-default required">
+                      <label>Subject</label>
+                      <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin=""  ng-model="Requirements.subject_id" name="subject_id" required>
+                        <option value="">Select a subject</option>
+                        <option ng-repeat="Subject in Subjects" value="{{Subject.subject_id}}">
+                          {{Subject.subject_name}}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="form-group form-group-default col-sm-6">
+                      <label>Preffered Day and Time</label>
+                      <!-- <input type="text" ng-model="Requirements.day_and_time" name="day_and_time" class="form-control" placeholder="Enter your preffered day and time for tution"> -->
+                    </div>
+                    <div class='input-group date col-sm-6' id='datetimepicker1'>
+                      <input type='text' id="day-and-time" ng-model="Requirements.day_and_time" name="day_and_time" class="form-control"/>
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                    </div>
+
+                    <!-- <div class="row clearfix"> -->
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>Level</label>
+                          <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.level" name="level" required>
+                            <option value="">Select Level</option>
+                            <option value="1">HL</option>
+                            <option value="2">SL</option>
+                            <option value="3">Ab Initio</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default">
+                          <label>No. of Hours</label>
+                          <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.hours" name="hours">
+                            <option value="">Select Hours</option>
+                            <option value="1-2 hours/day">1-2 hours/day</option>
+                            <option value="1-2 hours/week">1-2 hours/week</option>
+                            <option value="2-4 hours/week">2-4 hours/week</option>
+                            <option value="4-6 hours/week">4-6 hours/week</option>
+                            <option value="6-8 hours/week">6-8 hours/week</option>
+                            <option value="8-10 hours/week">8-10 hours/week</option>
+                            <option value="10-12 hours/week">10-12 hours/week</option>
+                          </select>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                    <div class="form-group form-group-default required">
+                      <label>Description</label>
+                      <textarea class="form-control" id="description-text" placeholder="Enter detalis of your requirements here like - Topics, Timmings or any other" ng-model="Requirements.description" name="description" rows="10" cols="40" required></textarea>
+                    </div>
+                    <!-- <div class="row clearfix"> -->
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>Tier</label>
+                          <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.tier" name="tier" required>
+                            <option value="">Select Tier</option>
+                            <option value="1">Tier 1</option>
+                            <option value="2">Tier 2</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default srch-drpdwn">
+                          <label>Any specific Tutor?</label>
+                          <input class="form-control" type="text" ng-model="Requirements.specific_tutor" uib-typeahead="tutor as (tutor.firstname + ' ' + tutor.lastname) for tutor in Tutors | filter:$viewValue | limitTo:8">
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                    <!-- <div class="row clearfix"> -->
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default required">
+                          <label>Tution Method</label>
+                          <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.tution_method" name="tution_method" required>
+                            <option value="">Select One</option>
+                            <option value="1">Onile Tutoring</option>
+                            <option value="2">Face to Face Tutoring</option>
+                            <option value="3">Other</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding">
+                        <div class="form-group form-group-default pos_ini required">
+                          <label>Post Code</label>
+                          <input class="form-control" type="text" ng-model="Requirements.post_code" name="post_code" required>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                    <div class="form-group form-group-default">
+                      <label>Any extra information?</label>
+                      <textarea class="form-control" id="other-text" placeholder="Enter your text here" ng-model="Requirements.extra_info" rows="4"></textarea>
+                    </div>
+                  </div>
+                  
+                  <div class="pull-left width-100">
+                    <div class="checkbox check-primary">
+                      <input type="checkbox" checked="checked" value="1" id="checkbox-agree" ng-model="Requirements.true_info" required>
+                      <label for="checkbox-agree">I hereby certify that the information above is true and accurate
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <button class="btn bg-theme-color-2" type="submit" ng-disabled="addPostForm.$invalid">Submit</button>
+                </form>
+              </div>
+            </div>
+            <!-- END PANEL -->
+          </div>
+        </div>
+        <p class="text-right sm-text-center hinted-text p-t-10 p-r-10">What is it? <a data-href="#/">Terms and conditions</a></p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

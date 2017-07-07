@@ -1,0 +1,18 @@
+[27-Apr-2017 10:40:32 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/rostrum123/public_html/cometchat/cometchat_shared.php on line 94
+[27-Apr-2017 10:40:32 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Can't connect to local MySQL server through socket '/tmp/mysql5.sock' (2) in /home/rostrum123/public_html/cometchat/cometchat_shared.php on line 97
+[27-Apr-2017 11:19:10 UTC] PHP Notice:  Undefined variable: _SESSION in /home/rostrum123/public_html/cometchat/integration.php on line 11
+[27-Apr-2017 16:21:34 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:21:34 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:21:51 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:21:51 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:23:04 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:23:04 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:23:37 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[27-Apr-2017 16:23:37 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 04:47:10 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 04:47:10 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 05:24:21 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 05:55:09 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 05:56:46 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 06:07:00 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108
+[28-Apr-2017 06:07:00 UTC] PHP Fatal error:  Class 'Integration' not found in /home/rostrum123/public_html/cometchat/config.php on line 108

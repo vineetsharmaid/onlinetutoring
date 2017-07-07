@@ -1,0 +1,86 @@
+<script src="https://js.stripe.com/v3/"></script>
+<div class="panel panel-transparent admin-data">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  
+	<div class="col-md-3 m-t-25">
+    <ul class="nav nav-tabs settings-tabs nav-stacked">
+      <li class="active">
+      <a data-toggle="tab" ng-click="show_div(1)">Change Password</a></li>
+      <li><a data-toggle="tab" ng-click="show_div(2)">Card Details</a></li>
+    </ul>
+  </div>
+	
+	<div class="profile-setting no-padding col-md-9">
+    <div class="panel panel-default m-t-25 mh-526">
+    	<div ng-class="{beforeData_loader: partialLoader}"></div>
+      <div class="panel-heading">
+        <div class="panel-title">Settings</div>
+      </div>
+      <div class="panel-body">
+		    <div class="tab-content" ng-init="showDiv = 1">
+		      <div class="tab-pane" ng-show="showDiv == 1" ng-class="{'active': showDiv == 1}">
+		       <h3 class="Change_Title">Change Password</h3>
+		      	<form method="post" class="form-inline" ng-submit="changepasswordForm()" name="ChangePassword" novalidate>
+				  <div class="form-group col-md-12">
+				    <label class="label_title" for="email">Current Password:</label>
+				    <input type="password" class="form-control" ng-model="usr.current_password" name="current_password" ng-change="checkcurrentpassword()" placeholder="Enter Current Password" required>
+				  </div><br /><br />
+				  <span class="check_ld_pass">{{check_pass}}</span>
+				  <div class="form-group col-md-12">
+				    <label class="label_title" for="pwd">New Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				    <input type="password" class="form-control" placeholder="Enter New Password" ng-model="usr.new_password" name="new_password" required>
+				  </div><br /><br />
+				  <div class="form-group col-md-12">
+				    <label class="label_title" for="pwd">Confirm Password:</label>
+				    <input type="password" class="form-control" placeholder="Enter Confirm Password" ng-model="usr.confirm_password" name="confirm_password" required>
+				  </div><br /><br />
+				  <span class="check_pass" ng-if="usr.new_password != usr.confirm_password && usr.confirm_password.length > 0 ">Please Enter Same Password</span><br />
+				  <input style="text-align: center;" type="submit" class="btn btn-success" ng-disabled="ChangePassword.$invalid" value="Submit">
+				</form>
+		      </div>
+
+
+		    	<!-- STRIPE PAYMENT FORM -->
+		    	<div class="tab-pane" ng-show="showDiv == 2" ng-class="{'active': showDiv == 2}">
+		      	<div class="row">
+		      		<div class="col-md-offset-3 col-md-6 m-t-45" ng-if="!cardDetails">
+		      			<div ng-show="cardSaved">
+		      				<span>
+		      					<i class="fa fa-credit-card-alt">&nbsp;</i>
+		      					Card
+		      				</span>
+		      			</div>
+								<form id="stripe_form" class="auth-form" name="addPostForm" ng-submit="submitCard()" role="form" autocomplete="off" novalidate ng-show="!cardSaved">
+								  <div class="group">
+								    <label>
+								      <span>Card</span>
+								      <div id="card-element" class="field"></div>
+								    </label>
+								    <div class="outcome m-b-10">
+									    <div class="error" id="error"></div>
+									    <div class="success">
+									      <!-- <span class="token"></span> -->
+									    </div>
+									  </div>
+								  </div>
+								  <button class="btn btn-sm btn-primary width-100 save_card disabled" type="submit">Save</button>
+								  
+								</form>
+		      		</div>
+		      		<div class="col-md-offset-3 col-md-6 m-t-45" ng-if="cardDetails">
+		      			<div ng-show="cardSaved">
+		      				<span>
+		      					<i class="fa fa-credit-card-alt">&nbsp;</i>
+		      					Card {{cardDetails.card_ending}}
+		      				</span>
+		      			</div>
+		      		</div>
+		      	</div>
+		      	
+		    	</div>
+		    </div>
+  		</div>
+  	</div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="panel panel-transparent admin-data" ng-init="tableList()">
+  <!-- Shows loader  -->
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+  <div class="modal-demo">
+      <script type="text/ng-template" id="tutorTier.html">
+        <form name="tierForm" novalidate>
+          <div class="modal-header p-b-25">
+              <h3 class="modal-title" id="modal-title">Tutor's Tier</h3>
+          </div>
+          <div class="modal-body tut-detail-modal" id="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                  
+                <div class="form-group-attached">
+                  <div class="form-group form-group-default">
+                    <label>Choose tier for 
+                      <span ng-bind="(formData.firstname)+' '+(formData.lastname)"></span>
+                    </label>
+                    <div class="m-t-20 m-b-20 btn-under-label">
+                      
+                      <label class="btn btn-default m-r-10 width-100" ng-model="formData.tier" uib-btn-radio="'1'" required>Tier 1</label>
+                      
+                      <label class="btn btn-default m-l-10 width-100" ng-model="formData.tier" uib-btn-radio="'2'" required>Tier 2</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" name="tutor_id" ng-model="formData.tutor_id">
+
+          <div class="modal-footer">
+              <button class="btn btn-default" type="button" ng-click="cancel()">Close</button>
+              
+              <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="tierForm..$invalid">Save</button>
+              
+              
+          </div>
+        </form>
+
+      </script>
+    </div>
+
+  <div class="panel-heading m-t-30">
+    <div class="panel-title">Tutors</div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped" id="setDataTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Tution</th>
+          <th>Class</th>
+          <th>Payment By</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <!-- <th class="text-center">Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="Transaction in Transactions">
+          <td class="v-align-middle" ng-bind="Transaction.transaction_id"></td>
+          
+          <td class="v-align-middle" ng-bind="Transaction.tution_title"></td>
+          
+          <td class="v-align-middle" ng-bind="Transaction.title"></td>
+          
+          <td class="v-align-middle" ng-bind="(Transaction.student_fname) +' '+ (Transaction.student_lname)"></td>
+          
+          <td class="v-align-middle">
+            <span>
+            <i class="fa fa-gbp">&nbsp;</i>
+            <b ng-bind="Transaction.transaction_amount"></b></span>
+          </td>
+
+          <td class="v-align-middle" ng-bind="Transaction.payment_at"></td>
+          
+          <!-- <td class="v-align-middle text-center">
+            <div class="btn-group"> 
+            	<a href="#/transactions/{{Transaction.transaction_id}}" class="btn btn-sm btn-primary m-l-5">
+                Details
+              </a>
+            </div>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- END PANEL -->
+</div>
+<!-- END CONTAINER FLUID -->
+
+</div>
+<!-- END PAGE CONTENT -->

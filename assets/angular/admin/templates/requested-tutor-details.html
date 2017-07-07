@@ -1,0 +1,170 @@
+<div class="panel panel-transparent admin-data">
+	<div ng-class="{beforeData_loader: showLoader}"></div>	
+	<div class="panel-heading m-t-30">
+		<div class="panel-title">Tutor's Details</div>
+		<div class="pull-right">
+			<a href="#/tutors-request"><button class="btn btn-sm pull-right btn-default m-l-10">Back</button></a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	
+	<div class="row">
+        <div class="profile-thumb col-lg-2 col-md-3">
+          <div class="panel panel-default m-t-25">
+            <div class="panel-heading"><!-- 
+              <div class="panel-title">User Profile</div> -->
+              <div class="profile-img">
+              <!-- <span><i class="fa fa-check"></i> Verified</span> -->
+              <img alt="Profile Thumb" src="/rostrum/uploads/profile_imgs/{{Tutor.profile_img}}" class="img-responsive">
+              </div>
+            </div>
+<!--             <div class="panel-body">
+              <h3><span class="semi-bold">John</span> Doe</h3>
+              <h5 class="bold text-primary"><span class="icon-muted fs-14"><i class="fa fa-certificate"></i></span> Expert Mathematician</h5>
+              <span class="bold"><span class="icon-muted fs-14"><i class="fa fa-map-marker"></i></span> Block 4, P.U, San Diego</span>
+              <h5 class="semi-bold"><span class="icon-muted fs-14"><i class="fa fa-trophy"></i></span> 120 hours tutoring 25 students</h5>
+            </div> -->
+          </div>
+        </div>
+		<div class="tut-detail-table col-lg-9 col-md-9 p-l-25" ng-cloak> <!-- tut-detail-table col-sm-8 col-sm-offset-2  -->
+			<div class="col-sm-6 no-padding">
+				<h2>Personal Details</h2>
+			</div>
+			<div class="col-sm-6">
+				<button class="btn btn-sm pull-right m-l-10" ng-class="Tutor.status == '3' ? 'btn-danger' : 'btn-default'" ng-bind="Tutor.status == '3' ? 'Blocked' : 'Block'" ng-click="changeTutorStatus(3)"></button>
+				
+				<button class="btn btn-sm pull-right m-l-10" ng-class="Tutor.status == '1' ? 'btn-primary' : 'btn-default'" ng-bind="Tutor.status == '1' ? 'Approved' : 'Approve'" ng-click="changeTutorStatus(1)"></button>
+
+				<a href="./uploads/resumes/{{Tutor.resume}}" class="btn btn-sm btn-primary pull-right" target="_blank" ng-if="Tutor.resume">Resume</a>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Name </th>
+							<td ng-bind="(Tutor.firstname)+ ' ' +(Tutor.lastname)"></td>
+						</tr>
+						
+						<tr>
+							<th>Gender </th>
+							<td ng-bind="Tutor.gender == '0' ? 'Male' : 'Female'"></td>
+						</tr>
+						
+						<tr>
+							<th>Date of Birth </th>
+							<td ng-bind="Tutor.dob"></td>
+						</tr>
+						<tr>
+							<th>Primary Email </th>
+							<td ng-bind="Tutor.email"></td>
+						</tr>
+						<tr>
+							<th>Secondary Email </th>
+							<td ng-bind="Tutor.secondary_email"></td>
+						</tr>
+						<tr>
+							<th>Primary Phone Number </th>
+							<td ng-bind="Tutor.phone"></td>
+						</tr>
+						<tr>
+							<th>Secondary Phone Number </th>
+							<td ng-bind="Tutor.secondary_phone"></td>
+						</tr>
+						<tr>
+							<th>How did you find out about Rostrum? </th>
+							<td ng-bind="Tutor.how_abt_rostrum"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h2>IB Diploma Details</h2>
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Year of Graduation</th>
+							<td ng-bind="Tutor.ib_yog"></td>
+						</tr>
+						
+						<tr>
+							<th>Country of School/College</th>
+							<td ng-bind="Tutor.ib_college"></td>
+						</tr>
+						
+						<tr>
+							<th>Name of School/College</th>
+							<td ng-bind="Tutor.ib_country"></td>
+						</tr>
+						<tr>
+							<th>Final IB Score </th>
+							<td ng-bind="Tutor.final_ib_score"></td>
+						</tr>
+						<tr>
+							<th>Extended Essay Subject </th>
+							<td ng-bind="Tutor.extended_essay_subject"></td>
+						</tr>
+						<tr>
+							<th>Extended Essay Grade </th>
+							<td ng-bind="Tutor.extended_essay_grade"></td>
+						</tr>
+						<tr>
+							<th>Tutoring Opportunities </th>
+							<td>
+								<label for="other_tuitoring">Face to Face Tution: </label>
+                <span ng-bind="DiplomaDetails.face_to_face == '1' ? 'Yes' : 'No'"></span>
+                <br />
+                <label for="other_tuitoring">Revision Courses: </label>
+                <span ng-bind="DiplomaDetails.revision_courses == '1' ? 'Yes' : 'No'"></span>
+                <br />
+                <label for="other_tuitoring">Online Private Tuition: </label>
+                <span ng-bind="DiplomaDetails.online_private_tution == '1' ? 'Yes' : 'No'"></span>
+                <br />
+                <label for="other_tuitoring">Other (e.g. work on creating tutor material): </label>
+                <span ng-bind="DiplomaDetails.other_tutoring_opportunities == '1' ? 'Yes' : 'No'"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h2>Further Information </h2>
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>University Or College Attention </th>
+							<td ng-bind="Tutor.university_attending"></td>
+						</tr>
+						
+						<tr>
+							<th>Subject OR Subject area studying at University </th>
+							<td ng-bind="Tutor.subject_at_university"></td>
+						</tr>
+						
+						<tr>
+							<th>Expected year of Graduation from University</th>
+							<td ng-bind="Tutor.expected_univerisity_yog"></td>
+						</tr>
+						<tr>
+							<th>Give us a short description of yourself and what you hope will characterise you as a Rostrum Tutor! </th>
+							<td ng-bind="Tutor.short_description"></td>
+						</tr>
+						<tr>
+							<th>Teaching Country </th>
+							<td ng-bind="Tutor.teaching_country"></td>
+						</tr>
+						<tr>
+							<th>Eligibility </th>
+							<td ng-bind="Tutor.eligibility"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>

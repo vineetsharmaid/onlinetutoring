@@ -1,0 +1,344 @@
+<div class="panel panel-transparent admin-data">
+  <div ng-class="{beforeData_loader: showLoader}"></div>
+
+
+          <!-- Modal -->
+          <div class="modal fade fill-in" id="modalStudentpost" tabindex="-1" role="dialog" aria-hidden="true">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="pg-close"></i>
+            </button>
+            <div class="modal-dialog ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="text-left p-b-5"><span class="semi-bold">Post A Requirement</span></h5>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                    <!-- START PANEL -->
+                    <div class="panel panel-transparent">
+                      <div class="panel-body">
+                        <form id="form-project" class="auth-form" name="addPostForm" ng-submit="saveRequirement()" role="form" autocomplete="off" novalidate >
+                          <p>Basic Information</p>
+                          <div class="form-group-attached">
+                            <div class="row clearfix">
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                  <label>Name</label>
+                                  <input type="text" class="form-control" ng-model="Requirements.fullName" name="name"  required>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default">
+                                  <label>Contact No.</label>
+                                  <input type="text" class="form-control" ng-model="Requirements.phone" name="phone">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group form-group-default required">
+                              <label>Email</label>
+                              <input type="email" class="form-control" ng-model="Requirements.email" name="Email" required>
+                            </div>
+                          </div>
+                          <p class="m-t-10">Advanced Information</p>
+                          <div class="form-group-attached">
+                            <div class="form-group form-group-default required">
+                              <label>Title</label>
+                              <textarea class="form-control" placeholder="Enter title for requirement" ng-model="Requirements.title" name="title" rows="1" required></textarea>
+                            </div>
+                            
+                            <div class="form-group form-group-default required">
+                              <label>Subject</label>
+                                <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin=""  ng-model="Requirements.subject_id" name="subject_id" required>
+                                  <option value="">Select a subject</option>
+                                  <option ng-repeat="Subject in Subjects" value="{{Subject.subject_id}}">
+                                    {{Subject.subject_name}}
+                                  </option>
+                                </select>
+                            </div>
+
+                       <div class="form-group form-group-default col-sm-6">
+                            <label>Preffered Day and Time</label>           
+                            <!-- <div class="row">
+                              <div class="col-md-6">
+                                <p class="input-group">
+                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Requirements.day_and_time" name="day_and_time" is-open="popup.opened" datepicker-options="dateOptions"
+                                ng-required="true" close-text="Close" ng-change="dateChange()" />
+                                <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                                </p>
+                              </div>
+                              <div class="col-md-6">
+                                <div uib-timepicker ng-model="Requirements.mytime" name="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                              </div>
+                            </div> -->
+                            <!-- <uib-timepicker ng-model="dt2" hour-step="1" minute-step="15" name="dt2"   show-meridian="true" min="min" max="max">
+                            </uib-timepicker> -->
+                              <!-- <input type="hidden" id="gettimefilter" name="newfiltertime" value="{{ Requirements.mytime | date:'shortTime' }}" /> -->
+                            <!-- <pre class="alert alert-info">Time is: {{ Requirements.mytime | date:'shortTime' }}</pre> -->
+                      </div>
+                      <div class='input-group date col-sm-6' id='datetimepicker1'>
+                        <input type='text' id="day-and-time" ng-model="Requirements.day_and_time" name="day_and_time" class="form-control"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                      </div>
+
+<!--                             <div class="form-group form-group-default">
+                              <label>Preffered Day and Time</label>
+                           
+                              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Requirements.day_and_time" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" name="day_and_time" ng-focus="open1()" ng-value="Requirements.day_and_time"/>
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                              </div>
+                  <uib-timepicker ng-model="Requirements.day_and_time" hour-step="1" minute-step="15" name="day_and_time"   show-meridian="true" min="min" max="max">
+                   </uib-timepicker>
+            <pre class="alert alert-info">Time is: {{Requirements| date:'M/d/yyyy HH:mm' }}</pre> -->
+                              <!-- <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="fname" class="col-sm-3 control-label required">Date of Birth</label>
+                      
+                      
+                      <div class="col-sm-9">
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Tutor.dob" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" name="dob" ng-focus="open1()" ng-value="Tutor.dob"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </p>
+                       
+                      </div>
+
+                    </div>
+                  </div>
+                </div> -->
+
+
+                            <div class="row clearfix">
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                  <label>Level</label>
+                                  <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.level" name="level" required>
+                                    <option value="">Select Level</option>
+                                    <option value="1">HL</option>
+                                    <option value="2">SL</option>
+                                    <option value="3">Ab Initio</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default">
+                                  <label>No. of Hours</label>
+                                  <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.hours" name="hours">
+                                      <option value="">Select Hours</option>
+                                      <option value="1-2 hours/day">1-2 hours/day</option>
+                                      <option value="1-2 hours/week">1-2 hours/week</option>
+                                      <option value="2-4 hours/week">2-4 hours/week</option>
+                                      <option value="4-6 hours/week">4-6 hours/week</option>
+                                      <option value="6-8 hours/week">6-8 hours/week</option>
+                                      <option value="8-10 hours/week">8-10 hours/week</option>
+                                      <option value="10-12 hours/week">10-12 hours/week</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group form-group-default required">
+                              <label>Description</label>
+                              <textarea class="form-control" id="description-text" placeholder="Enter detalis of your requirements here like - Topics, Timmings or any other" ng-model="Requirements.description" name="description" rows="10" cols="40" required></textarea>
+                            </div>
+                            <div class="row clearfix">
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                  <label>Tier</label>
+                                  <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.tier" name="tier" required>
+                                    <option value="">Select Tier</option>
+                                    <option value="1">Tier 1</option>
+                                    <option value="2">Tier 2</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default">
+                                  <label>Any specific Tutor?:</label>
+                                 <input class="form-control" type="text" ng-model="Requirements.specific_tutor" uib-typeahead="tutor as (tutor.firstname + ' ' + tutor.lastname) for tutor in Tutors | filter:$viewValue | limitTo:8">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row clearfix">
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                  <label>Tution Method</label>
+                                  <select class=" cs-skin-slide cs-transparent form-control no-padding" data-init-plugin="" ng-model="Requirements.tution_method" name="tution_method" required>
+                                    <option value="">Select One</option>
+                                    <option value="1">Onile Tutoring</option>
+                                    <option value="2">Face to Face Tutoring</option>
+                                    <option value="3">Other</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                  <label>Post Code</label>
+                                  <input class="form-control" type="text" ng-model="Requirements.post_code" name="post_code" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                              <label>Any extra information?</label>
+                              <textarea class="form-control" id="other-text" placeholder="Enter your text here" ng-model="Requirements.extra_info" rows="4"></textarea>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="pull-left">
+                            <div class="checkbox check-primary">
+                              <input type="checkbox" checked="checked" value="1" id="checkbox-agree" ng-model="Requirements.true_info" required>
+                              <label for="checkbox-agree">I hereby certify that the information above is true and accurate
+                              </label>
+                            </div>
+                          </div>
+                          <br>
+                          <button class="btn btn-primary" type="submit" ng-disabled="addPostForm.$invalid">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- END PANEL -->
+                  </div>
+                  </div>
+                  <p class="text-right sm-text-center hinted-text p-t-10 p-r-10">What is it? <a data-href="#/">Terms and conditions</a></p>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+
+  <div class="row" ng-init="getFeeds(currentFeedType)">
+    <div class="col-md-12">
+      <div class="col-md-3">
+           <a data-target="#modalStudentpost" data-toggle="modal" id="btnFillSizeToggler" href="#/" class="btn btn-sm tutor" ng-click="getGroups(); getTutors(); getSubjects();">
+              <i class="fa fa-plus">&nbsp;</i>
+              Request a Tutor
+            </a>
+      </div>
+      <div class="col-md-9">
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10" ng-class="{ 'btn-primary': currentFeedType == '0' }" ng-click="getFeeds(0)">
+        Rquested</a>
+        
+
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10 dark-blue" ng-class="{'btn-primary': currentFeedType=='1'}"  ng-click="getFeeds(1)">Ongoing</a>
+        
+        <a href="#/" class="btn btn-sm m-l-10 m-r-10 dark-blue1" ng-class="{'btn-primary': currentFeedType=='3'}"  ng-click="getFeeds(3)">Completed</a>
+      </div>
+
+  <div class="profile-thumb col-md-3 sm-no-padding">
+    <div class="panel panel-default m-t-25">
+      <div class="panel-heading">
+        <div class="panel-title">User Profile</div>
+        <div class="profile-img">
+          <!-- button for changing image -->
+          <span id="changeProfileImage">
+            <i class="fa fa-pencil"></i>
+          </span>
+          
+          <!-- image preview element -->
+          <img alt="Profile Thumb" src="/rostrum/uploads/profile_imgs/{{Student.profile_img}}" class="img-responsive" onerror="this.src='/rostrum/uploads/profile_imgs/male-default-avatar.png';" id="proImage">
+          <!-- hidden field to change image -->
+          <input type="file" name="profile_image" id="imageInput" onchange="readURL(this)" class="hiden">
+          
+        </div>
+        
+        
+      </div>
+      <div class="panel-body">
+        <h3>
+        <span class="semi-bold" ng-bind="(Student.firstname) +' '+ ( Student.lastname )"></span>
+        </h3>
+        <span class="bold">
+          <span class="icon-muted fs-14">
+            <i class="fa fa-map-marker"></i>
+          </span>
+          {{Student.city_name}}, {{Student.country_name}}
+        </span>
+        <!-- <h5 class="semi-bold">
+        <span class="icon-muted fs-14">
+          <i class="fa fa-trophy"></i>
+        </span>
+        120 hours tutions by 5 tutors
+        </h5>
+        <div class="rating">
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star"></i></span>
+          <span class="star text-warning-dark"><i class="fa fa-star-half-o"></i></span>
+          <span class="rate-count bold">4.5 <a href="_">(22 Reviews)</a></span>
+        </div> -->
+        <!-- <span class="bold"><span class="icon-muted fs-14"><i class="fa fa-magic"></i></span> 10 Years of Experience</span>
+        <h5 class="semi-bold"><span class="icon-muted fs-14"><i class="fa fa-trophy"></i></span> "Milken Educator Award" Winner</h5> -->
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="profile-setting col-md-9 no-padding mh-800">
+    <div class="panel panel-default m-t-25 mh-526">
+      <div class="panel-heading">
+        <div class="panel-title">My Feeds</div>
+
+    <!--     <button ng-click="addField()">Add Field</button>
+    
+        <div ng-repeat="field in data.fields">
+          <div demo-display="field" demo-days="days"></div>
+        </div> -->
+
+      </div>
+      <div class="panel-body" ng-init="getFeeds(currentFeedType)">
+        <div class="icon-box mb-0 pl-20 p-0" ng-show="Feeds.length == 0">
+          <div class="empty-msg">
+            <h5>
+            No tution request found.
+            </h5>
+            <a data-target="#modalStudentpost" data-toggle="modal" id="btnFillSizeToggler" href="#/" class="btn btn-sm btn-info" ng-click="getGroups(); getTutors(); getSubjects();">
+              <i class="fa fa-plus">&nbsp;</i>
+              Request a Tutor
+            </a>
+            <!-- <span class="btn btn-sm btn-info">
+              <i class="fa fa-plus">&nbsp;</i>
+              Request a Tutor
+            </span> -->
+          </div>
+        </div>
+        <div class="icon-box mb-0 pl-20 p-0" ng-show="Feeds.length > 0" ng-repeat="Feed in filteredFeeds">
+          
+          <h3 class="icon-box-title pt-10 mt-0 mb-0 ng-binding" ng-bind="Feed.title"></h3>
+          <h5 class="small hint-text m-t-0 m-b-0"><i class="fa fa-calendar m-r-5 m-t-5 fs-14"></i> Posted at {{Feed.date}} {{Feed.time}} <span class="assigned_tutor" ng-if="currentFeedType == '1' ">Assigned Tutor:{{Feed.tutorfname}}</span></h5>
+          
+          <hr>
+          
+          <p class="text-gray" ng-bind="Feed.description"></p>
+          <a href="#/feeds/{{Feed.tr_id}}" class="btn btn-primary btn-cons btn-animated from-left pg pg-bag1">
+            <span>View Request</span>
+          </a>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="totalItems > itemsPerPage">
+    <div class="col-sm-4 col-md-offset-4 down-navigation">
+      <nav class="pull-right">
+        <ul uib-pagination
+          total-items     = "totalItems"
+          items-per-page  = "itemsPerPage"
+          ng-model        = "currentPage"
+          ng-change       = "pageChanged(currentPage)">
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
